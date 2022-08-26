@@ -15,4 +15,15 @@ export const GlobalStyle = createGlobalStyle`
         --gray: #BFBFBF;
         --white: #FFFFFF;
     }
+
+    html,
+    body {
+        font-size: 62.5%;
+    }
+
+    .wrapper {
+        width: 36rem;
+        height: 100vh;
+        margin-inline: auto;
+    }
 `
