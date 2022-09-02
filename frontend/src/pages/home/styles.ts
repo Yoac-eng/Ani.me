@@ -8,6 +8,13 @@ export const HomeMain = styled.main`
     flex-direction: column;
     align-items: flex-start;
     gap: 2.026rem;
+
+    .title {
+        font-family: 'Rubik', sans-serif;
+        font-size: 1.8rem;
+        line-height: 21.33px;
+        color: var(--white);
+    }
     
     header {
         
@@ -15,14 +22,6 @@ export const HomeMain = styled.main`
         flex-direction: column;
         align-items: flex-start;
         gap: .6rem;
-
-
-        strong {
-            font-family: "Rubik", sans-serif;
-            font-size: 1.8rem;
-            line-height: 21.33px;
-            color: var(--white);
-        }
 
         p {
             font-family: "Inter", sans-serif;
@@ -92,4 +91,72 @@ export const HomeMain = styled.main`
 
         background: linear-gradient(269.96deg, rgba(6, 9, 15, 0.41) 0.04%, rgba(6, 9, 15, 0.8) 99.5%);
     }
+`
+
+
+export const LastUpdates = styled.section`
+    margin-top:  4.026rem;
+    
+    .title {
+        font-family: 'Rubik', sans-serif;
+        font-size: 1.8rem;
+        line-height: 21.33px;
+        color: var(--white);
+    }
+
+    .grid {
+        margin-top: 2.8rem;
+        
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.755rem 2.4rem;
+    }
+
+    .button {
+        display: block;
+
+        margin-top: 3.68rem;
+        padding-block: .4rem;
+        background: var(--secondary-color);
+        border-radius: 4px;
+
+        line-height: 32px;
+        color: var(--white);
+        font-size: 1.6rem;
+        font-weight: 500;
+        font-family: "Inter", sans-serif;
+
+        text-align: center;
+    }
+`
+
+export const Recent = styled.section`
+    margin-top: 4.8rem;
+
+    .title {
+        font-family: 'Rubik', sans-serif;
+        font-size: 1.8rem;
+        line-height: 21.33px;
+        color: var(--white);
+    }
+
+    .grid {
+        margin-top: 2.8rem;
+        
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.755rem 2.4rem;
+    }
+`
+
+export const Footer = styled.footer`
+    margin-top: 7.721rem;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 1.4rem;
+    line-height: 2.24rem;
+
+    text-align: center;
+
+    color: #BFBFBF;
 `
