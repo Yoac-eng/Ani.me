@@ -25,6 +25,7 @@ export const GlobalStyle = createGlobalStyle`
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         background-color: var( --dark-color);
+        color: var(--white);
     }
 
     a {
@@ -39,7 +40,6 @@ export const GlobalStyle = createGlobalStyle`
 
     .wrapper {
         width: 36rem;
-        height: 100vh;
 
         margin-inline: auto;
         padding: 2.4rem;
