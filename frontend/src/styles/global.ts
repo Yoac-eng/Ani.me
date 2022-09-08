@@ -39,7 +39,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     .wrapper {
-        width: 36rem;
+        width: min(36rem, 100%);
 
         margin-inline: auto;
         padding: 2.4rem;
