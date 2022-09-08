@@ -1,7 +1,7 @@
 import { AnimeCard } from '../../components/AnimeCard'
 import * as S from './styles'
 
-export default function Home() {
+export default function HomePage() {
     return (
         <>
             <S.HomeMain>
