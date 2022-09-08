@@ -4,7 +4,7 @@ import Player from "./pages/player";
 export function App() {
   return (
     <div className="wrapper">
-      <Player />
+      <Home />
     </div>
   )
 }
