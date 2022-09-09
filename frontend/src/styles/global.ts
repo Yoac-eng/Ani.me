@@ -17,6 +17,10 @@ export const GlobalStyle = createGlobalStyle`
         
         --gray: #BFBFBF;
         --white: #FFFFFF;
+
+        --navbar-height: 3.2rem;
+        
+        --wrapper-padding: 2.4rem;
     }
 
     html,
@@ -42,6 +46,6 @@ export const GlobalStyle = createGlobalStyle`
         width: min(36rem, 100%);
 
         margin-inline: auto;
-        padding: 2.4rem;
+        padding: var(--wrapper-padding);
     }
 `
