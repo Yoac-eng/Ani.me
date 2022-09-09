@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const HomeMain = styled.main`
     
-    margin-top: calc(4.8rem + var(--navbar-height));
+    margin-top: 4.8rem;
 
     display: flex;
     flex-direction: column;

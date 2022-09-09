@@ -1,9 +1,11 @@
+import AlphabetMenu from '../../components/AlphabetMenu'
 import { AnimeCard } from '../../components/AnimeCard'
 import * as S from './styles'
 
 export default function HomePage() {
     return (
         <>
+            <AlphabetMenu />
             <S.HomeMain>
                 <header>
                     <strong className="title">Últimas novidades</strong>
