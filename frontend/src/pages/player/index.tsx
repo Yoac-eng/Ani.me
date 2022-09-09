@@ -1,3 +1,4 @@
+import { Comments } from "../../components/Comments"
 import { Player } from "../../components/Player"
 import * as S from "./styles"
 
