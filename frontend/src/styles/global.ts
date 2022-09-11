@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import '@vime/core/themes/default.css';
 
 export const GlobalStyle = createGlobalStyle`
     * {

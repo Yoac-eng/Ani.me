@@ -21,7 +21,9 @@ export function PlayerBox({ anime }: PlayerProps) {
         <S.PlayerBoxWrapper>
             <h1>{anime.name} - Episódio {episodeData.number}</h1>
             <div className="player-container">
-                <div className="player-video"></div>
+                <div className="player-video">
+                    
+                </div>
                 <div className="desc">
                     <ul>
                         <li><span className="desc-item">Duração:</span> {episodeData.duration} Min.</li>
