@@ -10,7 +10,7 @@ interface PlayerProps {
     }
 }
 
-export function Player({ anime }: PlayerProps) {
+export function PlayerBox({ anime }: PlayerProps) {
     const [episodeData, setEpisodeData] = useState({ duration: 0, number: 0 });
 
     useEffect(() => {
@@ -18,9 +18,9 @@ export function Player({ anime }: PlayerProps) {
     }, [anime]);
 
     return (
-        <S.PlayerWrapper>
+        <S.PlayerBoxWrapper>
             <h1>{anime.name} - Episódio {episodeData.number}</h1>
-            <div className="player-box">
+            <div className="player-container">
                 <div className="player-video"></div>
                 <div className="desc">
                     <ul>
@@ -34,6 +34,6 @@ export function Player({ anime }: PlayerProps) {
                     </p>
                 </div>
             </div>
-        </S.PlayerWrapper>
+        </S.PlayerBoxWrapper>
     )
 }

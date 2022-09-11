@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
 import Home from "./pages/home";
-import Player from "./pages/player";
+import PlayerPage from "./pages/PlayerPage";
 
 export function App() {
   return (
@@ -11,7 +11,7 @@ export function App() {
           <NavBar/>
           <Routes>
             <Route path="/" element={<Home/>}/>
-            <Route path="/player" element={<Player/>}/>
+            <Route path="/player" element={<PlayerPage/>}/>
           </Routes>
       </BrowserRouter>
       <Footer/>
