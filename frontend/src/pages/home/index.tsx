@@ -41,10 +41,6 @@ export default function HomePage() {
                     }
                 </div>
             </S.Recent>
-            <S.Footer>
-                Todos os direitos reservados aos criadores
-                e produtores dos animes
-            </S.Footer>
         </>
     )
 }

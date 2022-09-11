@@ -1,7 +1,8 @@
 
 import * as S from './styles'
-import { List, MagnifyingGlass, X } from 'phosphor-react'
 import { useState, useEffect } from 'react';
+import { List, MagnifyingGlass, X } from 'phosphor-react'
+import { Link } from "react-router-dom";
 
 export default function NavBar() {
 
@@ -69,7 +70,8 @@ export default function NavBar() {
         <input type="text" placeholder="Buscar" />
       </form>
       <menu>
-        <a href="/">Início</a>
+        {/* To do: quando terminar as páginas trocar os a pra link */}
+        <Link to="/">Início</Link>
         <a href="">Lista</a>
         <a href="">Gêneros</a>
         <a href="">Novos episódios</a>

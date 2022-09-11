@@ -1,10 +1,11 @@
-import { Player } from "../../components/Player"
+import { Comments } from "../../components/Comments"
+import { PlayerBox } from "../../components/PlayerBox"
 import * as S from "./styles"
 
 export default function PlayerPage() {
     return (
         <S.PlayerPageWrapper>
-            <Player anime={{
+            <PlayerBox anime={{
                 name: "Darling in the franxx",
                 studio: "Trigger",
                 genders: ["Drama", "Ficcao", "Romance"],

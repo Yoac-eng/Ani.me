@@ -1,12 +1,20 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
 import Home from "./pages/home";
-import Player from "./pages/player";
+import PlayerPage from "./pages/PlayerPage";
 
 export function App() {
   return (
     <div className="wrapper">
-      <NavBar/>
-      <Home />
+      <BrowserRouter> 
+          <NavBar/>
+          <Routes>
+            <Route path="/" element={<Home/>}/>
+            <Route path="/player" element={<PlayerPage/>}/>
+          </Routes>
+      </BrowserRouter>
+      <Footer/>
     </div>
   )
 }

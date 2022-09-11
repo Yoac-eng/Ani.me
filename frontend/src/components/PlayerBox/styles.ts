@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const PlayerWrapper = styled.section`
+export const PlayerBoxWrapper = styled.section`
     display: flex;
     flex-direction: column;
     gap: 2.3rem;
@@ -13,7 +13,7 @@ export const PlayerWrapper = styled.section`
         color: #FFFFFF;
     }
 
-    .player-box {
+    .player-container {
         display: flex;
         flex-direction: column;
         gap: 3rem;
