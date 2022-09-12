@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import * as S from "./styles"
+import { Player, Video, Ui, ClickToPlay, Spinner, Poster} from '@vime/react';
 
 interface PlayerProps {
     anime: {
@@ -22,7 +23,29 @@ export function PlayerBox({ anime }: PlayerProps) {
             <h1>{anime.name} - Episódio {episodeData.number}</h1>
             <div className="player-container">
                 <div className="player-video">
-                    
+                <Player controls>
+                  <Video crossOrigin="" poster="https://media.vimejs.com/poster.png">
+                      {/* These are passed directly to the underlying HTML5 `<video>` element. */}
+                      {/* Why `data-src`? Lazy loading, you can always use `src` if you prefer.  */}
+                      <source
+                      data-src="test.mp4"
+                      type="video/mp4"
+                      />
+                      <track
+                      default
+                      kind="subtitles"
+                      src="https://media.vimejs.com/subs/english.vtt"
+                      srcLang="en"
+                      label="English"
+                      />
+                  </Video>
+                  <Ui>
+                    {/* Vime components. */}
+                    <ClickToPlay />
+                    <Spinner />
+                    <Poster />
+                  </Ui>
+                </Player>
                 </div>
                 <div className="desc">
                     <ul>

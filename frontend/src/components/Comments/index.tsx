@@ -1,23 +1,28 @@
 import * as S from './styles'
 
 export function Comments() {
-    const comments: Array<any> = []
+    const comments: Array<any> = [{imgSrc: "testando.jpg", name: "Daniel Cazé"}]
     return (
         <S.CommentsWrapper>
-            <strong>Comentarios</strong>
+            <strong>Comentários</strong>
             {
                 comments.map(item => (
                     <article>
                         <img src={item.imgSrc} />
-                        <div>
+                        <div id="commentary">
                             <p>{item.name}</p>
                             <span>
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate voluptatem nostrum rem natus in libero molestias quod dolorum vero ex maiores distinctio, adipisci explicabo, similique illo? Atque natus iure voluptates!
+                                Episodio muito top, já voltou muito bom!
                             </span>
                         </div>
                     </article>
                 ))
-            }
+              }
+            {/* Arrumar esse hr de forma que ele fique dividindo cada comentario novo */}
+            <hr/>
+            <a href="#" className="button">
+                    Ver mais
+            </a>
         </S.CommentsWrapper>
     )
 }

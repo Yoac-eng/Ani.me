@@ -9,8 +9,9 @@ export default function PlayerPage() {
                 name: "Darling in the franxx",
                 studio: "Trigger",
                 genders: ["Drama", "Ficcao", "Romance"],
-                synopsis: "lorem ipsum dolor sit amet, consectetur adipiscing"
+                synopsis: "Meu nome é Sasuke Uchiha.Eu odeio um monte de coisas. O que eu tenho não é um sonho,porque eu vou torná-lo uma realidade. Vou restaurar meu clã, e matar um certo alguém."
             }} />
+            <Comments/>
         </S.PlayerPageWrapper>
     )
 }
