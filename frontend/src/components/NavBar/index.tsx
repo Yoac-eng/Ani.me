@@ -21,9 +21,10 @@ export default function NavBar() {
   //Callback and useEffect to check if the scroll is going up or down
   let lastScrollTop = 0;
 
-  function test() {
+  function HandleScrollTop() {
     let offset = window.pageYOffset || document.documentElement.scrollTop;
     let offsetY = window.pageYOffset
+
     if (offset < lastScrollTop && offsetY > 101) {
       setIsScrollingUp(true);
       setIsMenuOpen(false);
@@ -35,13 +36,13 @@ export default function NavBar() {
     else {
       setIsScrollingUp(false);
     }
-    //Store the offset on the variable so in the next check if will be
-    //the new scroll offset comparing to the kast scroll top
+    //Store the offset on the variable so in the next check it will be
+    //the new scroll offset comparing to the last scroll top
     lastScrollTop = offset <= 0 ? 0 : offset;
   }
 
   useEffect(() => {
-    const scrollbarListener: any = window.addEventListener("scroll", test, false)
+    const scrollbarListener: any = window.addEventListener("scroll", HandleScrollTop, false)
     return () => {
       window.removeEventListener("scroll", scrollbarListener)
     }

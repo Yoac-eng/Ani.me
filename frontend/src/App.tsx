@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
@@ -6,6 +7,8 @@ import Login from "./pages/Login";
 import PlayerPage from "./pages/PlayerPage";
 
 export function App() {
+
+
   return (
     <div className="wrapper">
       <BrowserRouter> 
