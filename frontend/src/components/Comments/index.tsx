@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import * as S from './styles'
 
 export function Comments() {
@@ -22,9 +23,9 @@ export function Comments() {
                     </article>
                 ))
               }
-            <a href="#" className="button">
+            <Link to="#" className="button">
                     Ver mais
-            </a>
+            </Link>
         </S.CommentsWrapper>
     )
 }

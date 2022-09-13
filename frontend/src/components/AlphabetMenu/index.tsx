@@ -1,4 +1,5 @@
 
+import { Link } from 'react-router-dom';
 import * as S from './styles'
 
 export default function AlphabetMenu() {
@@ -7,9 +8,9 @@ export default function AlphabetMenu() {
 
   return (
     <S.ScrollMenu>
-      <a className="scroll-element showall-element" href="">Todos</a>
+      <Link className="scroll-element showall-element" to="/">Todos</Link>
       {Alphabet.map((item) => (
-      <a className="scroll-element" href="">{item}</a>
+        <Link className="scroll-element" to="/">{item}</Link>
       ))}
     </S.ScrollMenu>
     )

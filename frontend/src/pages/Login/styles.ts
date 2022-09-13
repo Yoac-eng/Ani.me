@@ -28,8 +28,11 @@ export const Form = styled.form`
     input {
       padding: 1rem 0.5rem 1.5rem 0.5rem;
       
-      color: var(--gray);
+      letter-spacing: 0.07rem;
+      color: var(--white);
       font-weight: 500;
+      font-size: 1.4rem;
+      font-family: 'Inter', sans-serif;
       
       outline: none;
       border: none;

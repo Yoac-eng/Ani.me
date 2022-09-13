@@ -2,16 +2,30 @@
 import * as S from './styles'
 import { useState, useEffect } from 'react';
 import { List, MagnifyingGlass, X } from 'phosphor-react'
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function NavBar() {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isScrollingUp, setIsScrollingUp] = useState(false);
+  const [navIconsDisplay, setNavIconsDisplay] = useState(true);
+
+  //Check which page the navbar is on and display or not the icons
+  const RouteLocation = useLocation();
+  useEffect(() => {
+    if(RouteLocation.pathname == "/login" || RouteLocation.pathname == "/register"){
+      setNavIconsDisplay(false);
+    }else{
+      setNavIconsDisplay(true);
+    }
+  });
 
   function toggleMenu() {
     setIsMenuOpen(prevState => !prevState)
+    if(isSearchOpen == true){
+      setIsSearchOpen(false)
+    }
   }
 
   function toggleSearch() {
@@ -48,6 +62,7 @@ export default function NavBar() {
     }
   }, [])
 
+
   return (
     <S.NavBarWrapper
       isMenuOpen={isMenuOpen}
@@ -55,27 +70,33 @@ export default function NavBar() {
       isScrollingUp={isScrollingUp}
     >
       <header>
-        <a id="logo" href="/">
+        <Link id="logo" to="/">
           Ani.me
-        </a>
-        <div className="icons">
-          <MagnifyingGlass className="cursor-change" size={24} color="#ffffff" onClick={toggleSearch} />
-          {isMenuOpen ?
-            <X className="cursor-change" size={24} color="#ffffff" onClick={toggleMenu} />
-            :
-            <List size={24} color="#ffffff" className="menu-icon cursor-change" onClick={toggleMenu} />
-          }
-        </div>
+        </Link>
+        {
+          //Check if the icons should be displayed or not depending on which page is beeing rendered
+          navIconsDisplay ? 
+          <div className="icons">
+            <MagnifyingGlass className="cursor-change" size={24} color="#ffffff" onClick={toggleSearch} />
+            {isMenuOpen ?
+              <X className="cursor-change" size={24} color="#ffffff" onClick={toggleMenu} />
+              :
+              <List size={24} color="#ffffff" className="menu-icon cursor-change" onClick={toggleMenu} />
+            }
+          </div>
+          :
+          ""
+        }
       </header>
       <form id="search-bar" action="">
-        <input type="text" placeholder="Buscar" />
+        <input type="text" placeholder="Buscar"/>
       </form>
       <menu>
-        {/* To do: quando terminar as páginas trocar os a pra link */}
-        <Link to="/">Início</Link>
-        <a href="">Lista</a>
-        <a href="">Gêneros</a>
-        <a href="">Novos episódios</a>
+        <Link onClick={toggleMenu} to="/">Início</Link>
+        <Link onClick={toggleMenu} to="/login">Login</Link>
+        <Link onClick={toggleMenu} to="/">Lista</Link>
+        <Link onClick={toggleMenu} to="/">Gêneros</Link>
+        <Link onClick={toggleMenu} to="/">Novos episódios</Link>
       </menu>
     </S.NavBarWrapper>
   )
