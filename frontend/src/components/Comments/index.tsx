@@ -1,7 +1,11 @@
 import * as S from './styles'
 
 export function Comments() {
-    const comments: Array<any> = [{imgSrc: "testando.jpg", name: "Daniel Cazé"}]
+    const comments: Array<any> = [
+    {imgSrc: "testando.jpg", name: "Daniel Cazé", commentary: "  transar de ladinho é mt poggers a piroca entrando e saindo kekw ai tu da uma segurada no peitinho e dale na metelancia mid gap only bota a mão no pescocinho dela e tome micro dif o foda eh so quando o dick escapa da pussy ai é omegalul total."},
+    {imgSrc: "testando.jpg", name: "Daniel Cazé", commentary: "  transar de ladinho é mt poggers a piroca entrando e saindo kekw ai tu da uma segurada no peitinho e dale na metelancia mid gap only bota a mão no pescocinho dela e tome micro dif o foda eh so quando o dick escapa da pussy ai é omegalul total."},
+    {imgSrc: "testando.jpg", name: "Daniel Cazé", commentary: "  transar de ladinho é mt poggers a piroca entrando e saindo kekw ai tu da uma segurada no peitinho e dale na metelancia mid gap only bota a mão no pescocinho dela e tome micro dif o foda eh so quando o dick escapa da pussy ai é omegalul total."}
+    ]
     return (
         <S.CommentsWrapper>
             <strong>Comentários</strong>
@@ -12,14 +16,12 @@ export function Comments() {
                         <div id="commentary">
                             <p>{item.name}</p>
                             <span>
-                                Episodio muito top, já voltou muito bom!
+                              {item.commentary}
                             </span>
                         </div>
                     </article>
                 ))
               }
-            {/* Arrumar esse hr de forma que ele fique dividindo cada comentario novo */}
-            <hr/>
             <a href="#" className="button">
                     Ver mais
             </a>
