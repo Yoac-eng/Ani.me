@@ -8,7 +8,8 @@ interface AnimeCardProps {
 export function AnimeCard({ name, lastEpisode }: AnimeCardProps) {
     return (
         <S.AnimeCardWrapper>
-            <a>
+            {/* Decidir se troco isso pra link ou não */}
+            <a href="/player">
                 {lastEpisode && <p>Episódio {lastEpisode}</p>}
             </a>
             <strong>{name}</strong>

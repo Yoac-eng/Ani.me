@@ -10,7 +10,7 @@ export const AnimeCardWrapper = styled.div`
 
     a {
 
-        background-image: url("https://source.unsplash.com/random");
+        background-image: url("https://picsum.photos/200/300");
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;

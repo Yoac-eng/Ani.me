@@ -44,7 +44,7 @@ export const HomeMain = styled.main`
         border-radius: 8px;
         overflow: hidden;
         
-        background-image: url("https://source.unsplash.com/random");
+        background-image: url("https://picsum.photos/600/500");
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;

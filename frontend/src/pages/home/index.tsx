@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import AlphabetMenu from '../../components/AlphabetMenu'
 import { AnimeCard } from '../../components/AnimeCard'
 import * as S from './styles'
@@ -11,12 +12,12 @@ export default function HomePage() {
                     <strong className="title">Últimas novidades</strong>
                     <p>O que você vai assistir hoje?</p>
                 </header>
-                <a href="#">
+                <Link to="#">
                     <div>
                         <strong>ONE PUNCH MAN TERÁ 3 TEMPORADA</strong>
                         <p>Como relatado anteriormente, a franquia baseada no mangá escrito por ONE e ilustrado por Yusuke Murata, One Punch […]</p>
                     </div>
-                </a>
+                </Link>
             </S.HomeMain>
             <S.LastUpdates>
                 <strong className="title">Últimas atualizações</strong>
@@ -27,9 +28,9 @@ export default function HomePage() {
                         ))
                     }
                 </div>
-                <a href="#" className="button">
+                <Link to="/" className="button">
                     Ver mais
-                </a>
+                </Link>
             </S.LastUpdates>
             <S.Recent>
                 <strong className="title">Animes recentes</strong>
