@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const PlayerBoxWrapper = styled.section`
+    margin-top: calc(5.4rem + var(--navbar-height));
+      
     display: flex;
     flex-direction: column;
     gap: 2.3rem;
