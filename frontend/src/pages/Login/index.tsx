@@ -4,7 +4,8 @@ import * as S from './styles'
 export default function Login() {
 
     return (
-      <S.Form id="login-form">
+      <S.LoginWrapper>
+        <S.Form id="login-form">
           <h1>Login</h1>
           <div className="form-inputs">
               <label htmlFor="username"/>
@@ -23,5 +24,6 @@ export default function Login() {
             </span>
           </S.AccountInfo>
         </S.Form>
+      </S.LoginWrapper>
     )
 }

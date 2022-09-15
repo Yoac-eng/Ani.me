@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const ScrollMenu = styled.menu`
-    margin-top: calc(3.6rem + var(--navbar-height));
     padding-bottom: 1.6rem;
 
     display: grid;

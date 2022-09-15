@@ -4,6 +4,7 @@ import * as S from './styles'
 export default function Register() {
 
     return (
+      <S.RegisterWrapper>
         <S.Form id="register-form">
           <h1>Criar Conta</h1>
           <div className="form-inputs">
@@ -26,5 +27,6 @@ export default function Register() {
             </span>
           </S.AccountInfo>
         </S.Form>
+      </S.RegisterWrapper>
     )
 }

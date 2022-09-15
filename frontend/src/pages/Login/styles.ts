@@ -1,7 +1,10 @@
 import styled from "styled-components";
 
+export const LoginWrapper = styled.div`
+    padding-top: 8rem;
+`
+
 export const Form = styled.form`
-  margin-top: 8rem;
   padding: 2rem 0;
 
   display: flex;

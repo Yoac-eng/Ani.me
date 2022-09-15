@@ -5,8 +5,8 @@ import * as S from './styles'
 
 export default function HomePage() {
     return (
-        <>
-            <AlphabetMenu />
+        <S.HomeWrapper>
+            <AlphabetMenu/>
             <S.HomeMain>
                 <header>
                     <strong className="title">Últimas novidades</strong>
@@ -42,6 +42,6 @@ export default function HomePage() {
                     }
                 </div>
             </S.Recent>
-        </>
+        </S.HomeWrapper>
     )
 }
