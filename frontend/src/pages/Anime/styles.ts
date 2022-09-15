@@ -1,12 +1,15 @@
 import styled from "styled-components";
 
-export const AnimeBanner = styled.figure`
-    margin-top: calc(var(--navbar-height) + 1rem);
+export const AnimeWrapper = styled.div`
+  padding-top: calc(var(--navbar-height) + 1rem);
+`
 
+export const AnimeBanner = styled.figure`
     position: relative;
     display: flex;
     justify-content: center;
-    
+    margin-bottom: 1.7rem;
+
     #bg-image{
       height: 35rem;
 
