@@ -50,8 +50,8 @@ export function PlayerBox({ anime }: PlayerProps) {
                 <div className="desc">
                     <ul>
                         <li><span className="desc-item">Duração:</span> {episodeData.duration} Min.</li>
-                        <li><span className="desc-item">Estudio:</span> {anime.studio}</li>
-                        <li><span className="desc-item">Genero:</span> {anime.genders.join(", ")}</li>
+                        <li><span className="desc-item">Estúdio:</span> {anime.studio}</li>
+                        <li><span className="desc-item">Gênero:</span> {anime.genders.join(", ")}</li>
                     </ul>
                     <p>
                         <span className="desc-item">Sinopse:</span>
