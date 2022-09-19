@@ -60,7 +60,6 @@ export const AnimeInfoWrapper = styled.section`
 
         padding-block: .4rem;
         background: var(--primary-color);
-        border-radius: 4px;
 
         line-height: 32px;
         color: var(--white);

@@ -17,7 +17,16 @@ export default function Anime() {
                 genders: ["Drama", "Ficcao", "Romance"],
                 synopsis: "Meu nome é Sasuke Uchiha. Eu odeio um monte de coisas. O que eu tenho não é um sonho, porque eu vou torná-lo uma realidade. Vou restaurar meu clã, e matar um certo alguém."
             }} />       
-          <Episode/>
+          <Episode episodeInfo={{
+            name: "Champions Valorant",
+            episode: "Loud é campeã!!",
+            season: 4,
+            episodeNumber: 8,
+            duration: 23,
+            version: "Dublado",
+            commentaries: 7,
+          }}
+          />
         </S.AnimeWrapper>
     )
 }
