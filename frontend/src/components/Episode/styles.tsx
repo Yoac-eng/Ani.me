@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export const EpisodeWrapper = styled.section`
-  margin-top: 3.2rem;
+export const EpisodeWrapper = styled.div`
   height: 8.5rem;
+  padding: 0.5rem 0;
 
   display: flex;
   justify-content: center;
@@ -21,7 +21,7 @@ export const EpisodeWrapper = styled.section`
     background-repeat: no-repeat;
     height: 100%;
     width: 50%;
-    
+
     #episode-duration{
       position: absolute;
       right: 0;

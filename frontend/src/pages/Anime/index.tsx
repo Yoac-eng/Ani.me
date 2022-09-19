@@ -1,6 +1,7 @@
 import AnimeInfo from '../../components/AnimeInfo'
 import Episode from '../../components/Episode'
 import * as S from './styles'
+import episodesList from '../../Mocks/episodesList'
 
 export default function Anime() {
     return (
@@ -9,24 +10,30 @@ export default function Anime() {
               <img id="bg-image" src="testando.jpg" alt="" />
               <img id="main-image" src="testando.jpg" alt="" />
           </S.AnimeBanner>
-          <AnimeInfo anime={{
+          <AnimeInfo 
+                anime={{
                 name: "Darling in the franxx",
                 videos: 87,
                 version: "Dublado",
                 studio: "Trigger",
                 genders: ["Drama", "Ficcao", "Romance"],
                 synopsis: "Meu nome é Sasuke Uchiha. Eu odeio um monte de coisas. O que eu tenho não é um sonho, porque eu vou torná-lo uma realidade. Vou restaurar meu clã, e matar um certo alguém."
-            }} />       
-          <Episode episodeInfo={{
-            name: "Champions Valorant",
-            episode: "Loud é campeã!!",
-            season: 4,
-            episodeNumber: 8,
-            duration: 23,
-            version: "Dublado",
-            commentaries: 7,
-          }}
-          />
+            }} />
+            {
+              episodesList.map((item) => (
+                <Episode 
+                  episodeInfo={{
+                    name: item.name,
+                    episode: item.episode,
+                    season: item.season,
+                    episodeNumber: item.episodeNumber,
+                    duration: item.duration,
+                    version: item.version,
+                    commentaries: item.commentaries,
+                  }}
+                />
+              ))
+            }      
         </S.AnimeWrapper>
     )
 }

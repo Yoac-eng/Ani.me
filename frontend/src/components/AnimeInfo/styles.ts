@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const AnimeInfoWrapper = styled.section`
-  
+    margin-bottom: 3.2rem;
+
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
