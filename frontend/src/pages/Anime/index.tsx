@@ -2,6 +2,7 @@ import AnimeInfo from '../../components/AnimeInfo'
 import Episode from '../../components/Episode'
 import * as S from './styles'
 import episodesList from '../../Mocks/episodesList'
+import { Comments } from '../../components/Comments'
 
 export default function Anime() {
     return (
@@ -33,7 +34,8 @@ export default function Anime() {
                   }}
                 />
               ))
-            }      
+            }
+            <Comments/>
         </S.AnimeWrapper>
     )
 }
