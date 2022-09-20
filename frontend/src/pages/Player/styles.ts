@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+export const PlayerWrapper = styled.div`
+    padding-top: calc(5.4rem + var(--navbar-height));
+
+`
+
 export const Related = styled.section`
     margin-top: 4rem;
 

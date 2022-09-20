@@ -5,7 +5,7 @@ import * as S from "./styles"
 
 export default function PlayerPage() {
     return (
-        <>
+        <S.PlayerWrapper>
             <PlayerBox anime={{
                 name: "Darling in the franxx",
                 studio: "Trigger",
@@ -23,6 +23,6 @@ export default function PlayerPage() {
                     }
                 </div>
             </S.Related>
-        </>
+        </S.PlayerWrapper>
     )
 }

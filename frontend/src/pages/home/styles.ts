@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+export const HomeWrapper = styled.div`
+    padding-top: calc(3.6rem + var(--navbar-height));
+`
+
 export const HomeMain = styled.main`
     
     margin-top: 4.8rem;
