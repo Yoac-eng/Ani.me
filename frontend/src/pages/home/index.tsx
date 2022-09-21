@@ -5,7 +5,7 @@ import { useQuery } from 'react-query'
 import * as S from './styles'
 import api from '../../services/Api'
 
-type NewAnimeTrailer = {
+type NewSeasonsData = {
   pagination:{}
   data:
     {
@@ -14,29 +14,80 @@ type NewAnimeTrailer = {
           large_image_url:string;
         }
       }
+      title: string;
+    }[]
+}
+
+type NewEpisodeData = {
+  pagination: {}
+  data: 
+    {
+    entry:{
+      images:{
+        jpg:{
+          large_image_url: string;
+        }
+      }
+      title: string;
+    }
+    episodes:{
+      title: string;
+    }[]
+  }[]
+}
+
+type PopularAnimeData = {
+  pagination: {}
+  data:
+    {
+      images:{
+        jpg:{
+          large_image_url: string;
+        }
+      }
+      title: string;
     }[]
 }
 
 export default function HomePage() {
   
-  const { data: anime, isFetching } = useQuery<NewAnimeTrailer>('trailerData', async () =>{
+  //Getting new Anime data
+  const { data: anime } = useQuery<NewSeasonsData>('animeSeasonsData', async () =>{
     const response = await api.get('seasons/upcoming')
 
     return response.data;
   })
+  const animeNewSeason = anime?.data[0];
+
+  //Getting new Episodes data
+  const { data: recentEpisodes } = useQuery<NewEpisodeData>('newEpisodeData', async () => {
+    const response = await api.get('watch/episodes')
+
+    return response.data
+  })
+  const episodesDataList = recentEpisodes?.data;
+
+  //Getting Animes by popularity
+  const { data: popularAnimes } = useQuery<PopularAnimeData>('popularAnimeData',async () => {
+    const response = await api.get('top/anime?filter=bypopularity')
+
+    return response.data
+  })
+  const popularAnimesList =  popularAnimes?.data;
 
   return (
     <S.HomeWrapper>
       <AlphabetMenu />
-      <S.HomeMain trailerBackgroundImage={anime?.data[0].trailer.images.large_image_url}>
+      <S.HomeMain trailerBackgroundImage={animeNewSeason?.trailer.images.large_image_url}>
         <header>
           <strong className="title">Últimas novidades</strong>
           <p>O que você vai assistir hoje?</p>
         </header>
         <Link to="#">
           <div>
-            <strong>ONE PUNCH MAN TERÁ 3 TEMPORADA</strong>
-            <p>Como relatado anteriormente, a franquia baseada no mangá escrito por ONE e ilustrado por Yusuke Murata, One Punch […]</p>
+            <strong>{animeNewSeason?.title} TERÁ NOVA TEMPORADA</strong>
+            <p>A nova temporada será na verdade a primeira temporada do famoso manga Chainsaw Man, adaptado pelo estúdio MAPPA, o anime[...]
+            </p>
           </div>
         </Link>
       </S.HomeMain>
@@ -44,8 +95,8 @@ export default function HomePage() {
         <strong className="title">Últimas atualizações</strong>
         <div className='grid'>
           {
-            [1, 2, 3, 4, 5, 6].slice(0, 6).map((item) => (
-              <AnimeCard name={'JOJO'} lastEpisode={24} />
+            episodesDataList?.slice(0, 6).map((item) => (
+              <AnimeCard name={item.entry.title} lastEpisode={item.episodes[0].title} image={item.entry.images.jpg.large_image_url}/>
             ))
           }
         </div>
@@ -54,11 +105,11 @@ export default function HomePage() {
         </Link>
       </S.LastUpdates>
       <S.Recent>
-        <strong className="title">Animes recentes</strong>
+        <strong className="title">Animes mais populares</strong>
         <div className='grid'>
           {
-            [1, 2, 3, 4, 5, 6].slice(0, 6).map((item) => (
-              <AnimeCard name={'One Piece'} />
+            popularAnimesList?.slice(0, 6).map((item) => (
+              <AnimeCard name={item.title} image={item.images.jpg.large_image_url} />
             ))
           }
         </div>

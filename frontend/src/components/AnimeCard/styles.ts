@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const AnimeCardWrapper = styled.div`
+interface AnimeCardProps{
+    backgroundImage: string | undefined;
+}
+
+export const AnimeCardWrapper = styled.div<AnimeCardProps>`
     width: 14.4rem;
 
     display: flex;
@@ -10,7 +14,8 @@ export const AnimeCardWrapper = styled.div`
 
     a {
 
-        background-image: url("https://picsum.photos/200/300");
+        background-image: ${props => (
+            props ? `url(${props.backgroundImage})` : 'none')};
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
@@ -38,6 +43,8 @@ export const AnimeCardWrapper = styled.div`
             font-family: "Inter", sans-serif;
             line-height: 13.79px;
             color: var(--gray);
+
+            white-space: nowrap;
         }
 
     }
