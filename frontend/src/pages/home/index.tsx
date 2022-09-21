@@ -1,9 +1,23 @@
 import { Link } from 'react-router-dom'
 import AlphabetMenu from '../../components/AlphabetMenu'
 import { AnimeCard } from '../../components/AnimeCard'
+import { useFetch } from '../../Hooks/useFetch'
 import * as S from './styles'
 
+type AnimeData = {
+  data:{
+    images:{
+      jpg: string
+    }
+  }
+}
+
 export default function HomePage() {
+  
+  const { data: Anime , error: piroca} = 
+    useFetch<AnimeData>('anime/1');
+
+    console.log(Anime?.data.images.jpg)
 
   return (
     <S.HomeWrapper>
