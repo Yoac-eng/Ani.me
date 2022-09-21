@@ -1,28 +1,34 @@
 import { Link } from 'react-router-dom'
 import AlphabetMenu from '../../components/AlphabetMenu'
 import { AnimeCard } from '../../components/AnimeCard'
-import { useFetch } from '../../Hooks/useFetch'
+import { useQuery } from 'react-query'
 import * as S from './styles'
+import api from '../../services/Api'
 
-type AnimeData = {
-  data:{
-    images:{
-      jpg: string
-    }
-  }
+type NewAnimeTrailer = {
+  pagination:{}
+  data:
+    {
+      trailer:{
+        images:{
+          large_image_url:string;
+        }
+      }
+    }[]
 }
 
 export default function HomePage() {
   
-  const { data: Anime , error: piroca} = 
-    useFetch<AnimeData>('anime/1');
+  const { data: anime, isFetching } = useQuery<NewAnimeTrailer>('trailerData', async () =>{
+    const response = await api.get('seasons/upcoming')
 
-    console.log(Anime?.data.images.jpg)
+    return response.data;
+  })
 
   return (
     <S.HomeWrapper>
       <AlphabetMenu />
-      <S.HomeMain>
+      <S.HomeMain trailerBackgroundImage={anime?.data[0].trailer.images.large_image_url}>
         <header>
           <strong className="title">Últimas novidades</strong>
           <p>O que você vai assistir hoje?</p>

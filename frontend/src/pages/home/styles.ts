@@ -3,8 +3,11 @@ import styled from "styled-components";
 export const HomeWrapper = styled.div`
     padding-top: calc(3.6rem + var(--navbar-height));
 `
+interface HomeMainProps{
+    trailerBackgroundImage: string | undefined;
+}
 
-export const HomeMain = styled.main`
+export const HomeMain = styled.main<HomeMainProps>`
     
     margin-top: 4.8rem;
 
@@ -48,7 +51,8 @@ export const HomeMain = styled.main`
         border-radius: 8px;
         overflow: hidden;
         
-        background-image: url("https://picsum.photos/600/500");
+        background-image: ${props => (
+            props ? `url(${props.trailerBackgroundImage})` : 'none')};
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
