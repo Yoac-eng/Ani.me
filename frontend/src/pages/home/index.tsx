@@ -6,7 +6,6 @@ import * as S from './styles'
 import api from '../../services/Api'
 
 type NewSeasonsData = {
-  pagination:{}
   data:
     {
       trailer:{
@@ -19,7 +18,6 @@ type NewSeasonsData = {
 }
 
 type NewEpisodeData = {
-  pagination: {}
   data: 
     {
     entry:{
@@ -37,7 +35,6 @@ type NewEpisodeData = {
 }
 
 type PopularAnimeData = {
-  pagination: {}
   data:
     {
       images:{
@@ -51,7 +48,7 @@ type PopularAnimeData = {
 
 export default function HomePage() {
   
-  //Getting new Anime data
+  //Getting new Anime season data
   const { data: anime } = useQuery<NewSeasonsData>('animeSeasonsData', async () =>{
     const response = await api.get('seasons/upcoming')
 

@@ -17,7 +17,7 @@ export function App() {
             <Route path="/player" element={<Player/>}/>
             <Route path="/login" element={<Login/>}/>
             <Route path="/register" element={<Register/>}/>
-            <Route path="/anime" element={<Anime/>}/>
+            <Route path="/anime/:id" element={<Anime/>}/>
           </Routes>
       </BrowserRouter>
       <Footer/>
