@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import * as S from './styles'
 
 interface AnimeCardProps {
@@ -10,9 +11,9 @@ export function AnimeCard({ name, lastEpisode, image }: AnimeCardProps) {
     return (
         <S.AnimeCardWrapper backgroundImage={image}>
             {/* Decidir se troco isso pra link ou não */}
-            <a href="/player">
+            <Link to="player">
                 {lastEpisode && <p>{lastEpisode}</p>}
-            </a>
+            </Link>
             <strong>{name}</strong>
         </S.AnimeCardWrapper>
     )

@@ -14,6 +14,7 @@ type NewSeasonsData = {
         }
       }
       title: string;
+      synopsis: string;
     }[]
 }
 
@@ -83,7 +84,8 @@ export default function HomePage() {
         <Link to="#">
           <div>
             <strong>{animeNewSeason?.title} TERÁ NOVA TEMPORADA</strong>
-            <p>A nova temporada será na verdade a primeira temporada do famoso manga Chainsaw Man, adaptado pelo estúdio MAPPA, o anime[...]
+            <p>
+              {animeNewSeason?.synopsis.substring(0, 250)}[...]
             </p>
           </div>
         </Link>
