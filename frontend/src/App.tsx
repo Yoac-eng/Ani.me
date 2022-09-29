@@ -14,10 +14,10 @@ export function App() {
           <NavBar/>
           <Routes>
             <Route path="/" element={<Home/>}/>
-            <Route path="/player" element={<Player/>}/>
+            <Route path="/player/:id" element={<Player/>}/>
             <Route path="/login" element={<Login/>}/>
             <Route path="/register" element={<Register/>}/>
-            <Route path="/anime/:id" element={<Anime/>}/>
+            <Route path="/anime" element={<Anime/>}/>
           </Routes>
       </BrowserRouter>
       <Footer/>

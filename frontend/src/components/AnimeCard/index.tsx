@@ -4,7 +4,7 @@ import * as S from './styles'
 interface AnimeCardProps {
     name: string
     lastEpisode?: string
-    image: string
+    image?: string
 }
 
 export function AnimeCard({ name, lastEpisode, image }: AnimeCardProps) {

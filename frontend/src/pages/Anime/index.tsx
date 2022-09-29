@@ -3,14 +3,8 @@ import Episode from '../../components/Episode'
 import * as S from './styles'
 import episodesList from '../../Mocks/episodesList'
 import { Comments } from '../../components/Comments'
-import { useParams } from 'react-router-dom'
 
 export default function Anime() {
-
-    const { id } = useParams();
-    console.log(id)
-
-
     return (
         <S.AnimeWrapper>
           <S.AnimeBanner>

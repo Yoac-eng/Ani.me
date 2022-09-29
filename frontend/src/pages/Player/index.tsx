@@ -1,9 +1,38 @@
+import * as S from "./styles"
 import { AnimeCard } from "../../components/AnimeCard"
 import { Comments } from "../../components/Comments"
 import { PlayerBox } from "../../components/PlayerBox"
-import * as S from "./styles"
 
-export default function PlayerPage() {
+import { useParams } from "react-router-dom";
+import { useQuery } from "react-query";
+import api from "../../services/Api";
+
+type EpisodeData = {
+    data:
+      {
+        trailer:{
+          embed_url: string
+          images:{
+            large_image_url:string;
+          }
+        }
+        title: string;
+        synopsis: string;
+        //adicionar o resto
+      }[]
+  }
+  
+export default function PlayerPage() {    
+    const { id } = useParams();
+
+    const { data: episode } = useQuery<EpisodeData>('episodeData', async () =>{
+        const response = await api.get(`anime/${id}`)
+    
+        return response.data;
+    })
+    const episodeData = episode?.data;
+    console.log(episodeData)
+    
     return (
         <S.PlayerWrapper>
             <PlayerBox anime={{
