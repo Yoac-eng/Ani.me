@@ -47,7 +47,10 @@ export default function PlayerPage() {
                 <div className='grid'>
                     {
                         [1, 2, 3, 4, 5, 6].slice(0, 6).map((item) => (
-                            <AnimeCard name={'Hunter x Hunter'} />
+                            <AnimeCard 
+                              name={'Hunter x Hunter'} 
+                              pathname={'/anime'}
+                            />
                         ))
                     }
                 </div>

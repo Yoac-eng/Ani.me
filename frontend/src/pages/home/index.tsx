@@ -22,6 +22,7 @@ type NewEpisodeData = {
   data: 
     {
     entry:{
+      mal_id: number;
       images:{
         jpg:{
           large_image_url: string;
@@ -64,6 +65,7 @@ export default function HomePage() {
     return response.data
   })
   const episodesDataList = recentEpisodes?.data;
+  console.log(episodesDataList)
 
   //Getting Animes by popularity
   const { data: popularAnimes } = useQuery<PopularAnimeData>('popularAnimeData',async () => {
@@ -95,7 +97,13 @@ export default function HomePage() {
         <div className='grid'>
           {
             episodesDataList?.slice(0, 6).map((item) => (
-              <AnimeCard name={item.entry.title} lastEpisode={item.episodes[0].title} image={item.entry.images.jpg.large_image_url}/>
+              <AnimeCard 
+                name={item.entry.title} 
+                lastEpisode={item.episodes[0].title} 
+                image={item.entry.images.jpg.large_image_url} 
+                pathname={'/player'} 
+                episodeId={item.entry.mal_id}
+              />
             ))
           }
         </div>
@@ -108,7 +116,11 @@ export default function HomePage() {
         <div className='grid'>
           {
             popularAnimesList?.slice(0, 6).map((item) => (
-              <AnimeCard name={item.title} image={item.images.jpg.large_image_url} />
+              <AnimeCard 
+                name={item.title} 
+                image={item.images.jpg.large_image_url}
+                pathname={'/anime'}
+              />
             ))
           }
         </div>
