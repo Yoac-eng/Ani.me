@@ -31,6 +31,7 @@ type NewEpisodeData = {
       title: string;
     }
     episodes:{
+      mal_id: number;
       title: string;
     }[]
   }[]
@@ -65,7 +66,6 @@ export default function HomePage() {
     return response.data
   })
   const episodesDataList = recentEpisodes?.data;
-  console.log(episodesDataList)
 
   //Getting Animes by popularity
   const { data: popularAnimes } = useQuery<PopularAnimeData>('popularAnimeData',async () => {

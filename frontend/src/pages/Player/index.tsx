@@ -10,6 +10,7 @@ import api from "../../services/Api";
 type EpisodeData = {
     data:
       {
+        // mal_id:number;
         trailer:{
           embed_url: string
           images:{
@@ -18,8 +19,14 @@ type EpisodeData = {
         }
         title: string;
         synopsis: string;
+        studios: {
+          name:string;
+        }[]
+        genres: {
+          name:string;
+        }[]
         //adicionar o resto
-      }[]
+      }
   }
   
 export default function PlayerPage() {    
@@ -31,30 +38,29 @@ export default function PlayerPage() {
         return response.data;
     })
     const episodeData = episode?.data;
-    console.log(episodeData)
     
     return (
-        <S.PlayerWrapper>
-            <PlayerBox anime={{
-                name: "Darling in the franxx",
-                studio: "Trigger",
-                genders: ["Drama", "Ficcao", "Romance"],
-                synopsis: "Meu nome é Sasuke Uchiha.Eu odeio um monte de coisas. O que eu tenho não é um sonho,porque eu vou torná-lo uma realidade. Vou restaurar meu clã, e matar um certo alguém."
-            }} />
-            <Comments/>
-            <S.Related>
-                <strong>Relacionados</strong>
-                <div className='grid'>
-                    {
-                        [1, 2, 3, 4, 5, 6].slice(0, 6).map((item) => (
-                            <AnimeCard 
-                              name={'Hunter x Hunter'} 
-                              pathname={'/anime'}
-                            />
-                        ))
-                    }
-                </div>
-            </S.Related>
-        </S.PlayerWrapper>
-    )
+      <S.PlayerWrapper>
+          <PlayerBox anime={{
+              name: episodeData?.title,
+              studios: episodeData?.studios,
+              genres: episodeData?.genres,
+              synopsis: episodeData?.synopsis,
+          }} />
+          <Comments/>
+          <S.Related>
+              <strong>Relacionados</strong>
+              <div className='grid'>
+                  {
+                      [1, 2, 3, 4, 5, 6].slice(0, 6).map((item) => (
+                          <AnimeCard 
+                            name={'Hunter x Hunter'} 
+                            pathname={'/anime'}
+                          />
+                      ))
+                  }
+              </div>
+          </S.Related>
+      </S.PlayerWrapper>
+  )
 }
