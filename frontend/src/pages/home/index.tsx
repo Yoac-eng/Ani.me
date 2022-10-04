@@ -101,8 +101,9 @@ export default function HomePage() {
                 name={item.entry.title} 
                 lastEpisode={item.episodes[0].title} 
                 image={item.entry.images.jpg.large_image_url} 
-                pathname={'/player'} 
-                episodeId={item.entry.mal_id}
+                pathname={'/player'}
+                animeId={item.entry.mal_id}
+                episodeId={item.episodes[0].mal_id}
               />
             ))
           }

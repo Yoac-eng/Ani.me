@@ -11,12 +11,14 @@ interface PlayerProps {
         genres?: {
             name: string;
         }[]
-        synopsis?: string
+        synopsis?: string;
+        episode?: string;
+        episodeDuration?: number;
     }
 }
 
 export function PlayerBox({ anime }: PlayerProps) {
-    const [episodeData, setEpisodeData] = useState({ duration: 0, number: 0 });
+    const [episodeData, setEpisodeData] = useState({ duration: anime.episodeDuration, number: anime.episode });
 
     // useEffect(() => {
         //get the episode data per slug param
@@ -62,7 +64,7 @@ export function PlayerBox({ anime }: PlayerProps) {
                 </div>
                 <div className="desc">
                     <ul>
-                        <li><span className="desc-item">Duração:</span> {episodeData.duration} Min.</li>
+                        <li><span className="desc-item">Duração:</span> {episodeData.duration} Min</li>
                         <li><span className="desc-item">{"Estúdio(s):"}</span> {studios?.join(",")}</li>
                         <li><span className="desc-item">Gênero:</span> {genres?.join(", ")}</li>
                     </ul>

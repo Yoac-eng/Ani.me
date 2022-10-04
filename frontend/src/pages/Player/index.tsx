@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
 import api from "../../services/Api";
 
-type EpisodeData = {
+type AnimeData = {
     data:
       {
         // mal_id:number;
@@ -28,24 +28,43 @@ type EpisodeData = {
         //adicionar o resto
       }
   }
+
+type EpisodeData = {
+    data:
+      {
+        duration: number;
+        synopsis: string;
+      }
+}
   
 export default function PlayerPage() {    
-    const { id } = useParams();
+    const { animeId, episodeId } = useParams();
+
+    const { data: anime } = useQuery<AnimeData>('animeData', async () =>{
+        const response = await api.get(`anime/${animeId}`)
+    
+        return response.data;
+    })
+    const animeData = anime?.data;
 
     const { data: episode } = useQuery<EpisodeData>('episodeData', async () =>{
-        const response = await api.get(`anime/${id}`)
+        const response = await api.get(`anime/${animeId}/episodes/${episodeId}`)
     
         return response.data;
     })
     const episodeData = episode?.data;
+
+    const episodeDuration = Math.floor(episodeData?.duration! / 60);
     
     return (
       <S.PlayerWrapper>
           <PlayerBox anime={{
-              name: episodeData?.title,
-              studios: episodeData?.studios,
-              genres: episodeData?.genres,
+              name: animeData?.title,
+              studios: animeData?.studios,
+              genres: animeData?.genres,
               synopsis: episodeData?.synopsis,
+              episode: episodeId,
+              episodeDuration: episodeDuration,
           }} />
           <Comments/>
           <S.Related>

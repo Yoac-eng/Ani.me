@@ -14,7 +14,7 @@ export function App() {
           <NavBar/>
           <Routes>
             <Route path="/" element={<Home/>}/>
-            <Route path="/player/:id/:id-episode" element={<Player/>}/>
+            <Route path="/player/:animeId/episodes/:episodeId" element={<Player/>}/>
             <Route path="/login" element={<Login/>}/>
             <Route path="/register" element={<Register/>}/>
             <Route path="/anime" element={<Anime/>}/>

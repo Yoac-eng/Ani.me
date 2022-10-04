@@ -6,25 +6,17 @@ interface AnimeCardProps {
     lastEpisode?: string
     image?: string
     pathname: string
+    animeId?: number
     episodeId?: number
 }
 
-export function AnimeCard({ name, lastEpisode, image, pathname, episodeId}: AnimeCardProps) {
+export function AnimeCard({ name, lastEpisode, image, pathname, animeId, episodeId}: AnimeCardProps) {
     return (
         <S.AnimeCardWrapper backgroundImage={image}>
-          {/* Possívelmente poderei tirar essa condição no futuro, só pra nao quebrar no momento */}
-            {
-              episodeId 
-              ?
-              <Link to={`${pathname}/${episodeId}`}>
-                  {lastEpisode && <p>{lastEpisode}</p>}
-              </Link>
-              :
-              <Link to={`${pathname}`}>
-                  {lastEpisode && <p>{lastEpisode}</p>}
-              </Link>
-            }
-            <strong>{name}</strong>
+          <Link to={`${pathname}/${animeId}/episodes/${episodeId}`}>
+              {lastEpisode && <p>{lastEpisode}</p>}
+          </Link>
+          <strong>{name}</strong>
         </S.AnimeCardWrapper>
     )
 }
