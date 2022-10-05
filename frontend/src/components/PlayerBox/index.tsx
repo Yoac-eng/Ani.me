@@ -1,6 +1,5 @@
-import { useState } from "react"
 import * as S from "./styles"
-import { Player, Video, Ui, ClickToPlay, Spinner, Poster} from '@vime/react';
+import { Player, Video, Ui, ClickToPlay, Spinner, Poster, Youtube} from '@vime/react';
 
 interface PlayerProps {
     anime: {
@@ -14,11 +13,11 @@ interface PlayerProps {
         synopsis?: string;
         episode?: string;
         episodeDuration?: number;
+        episodeTrailerYTid?: string;
     }
 }
 
 export function PlayerBox({ anime }: PlayerProps) {
-    const [episodeData, setEpisodeData] = useState({ duration: anime.episodeDuration, number: anime.episode });
 
     // useEffect(() => {
         //get the episode data per slug param
@@ -35,28 +34,13 @@ export function PlayerBox({ anime }: PlayerProps) {
 
     return (
         <S.PlayerBoxWrapper>
-            <h1>{anime.name} - Episódio {episodeData.number}</h1>
+            <h1>{anime.name} - Episódio {anime.episode}</h1>
             <div className="player-container">
                 <div className="player-video">
                 <Player controls>
-                  <Video crossOrigin="" poster="https://media.vimejs.com/poster.png">
-                      {/* These are passed directly to the underlying HTML5 `<video>` element. */}
-                      {/* Why `data-src`? Lazy loading, you can always use `src` if you prefer.  */}
-                      <source
-                      data-src="test.mp4"
-                      type="video/mp4"
-                      />
-                      <track
-                      default
-                      kind="subtitles"
-                      src="https://media.vimejs.com/subs/english.vtt"
-                      srcLang="en"
-                      label="English"
-                      />
-                  </Video>
+                    <Youtube videoId={anime.episodeTrailerYTid} />
                   <Ui>
                     {/* Vime components. */}
-                    <ClickToPlay />
                     <Spinner />
                     <Poster />
                   </Ui>
@@ -64,7 +48,7 @@ export function PlayerBox({ anime }: PlayerProps) {
                 </div>
                 <div className="desc">
                     <ul>
-                        <li><span className="desc-item">Duração:</span> {episodeData.duration} Min</li>
+                        <li><span className="desc-item">Duração:</span> {anime.episodeDuration ? anime.episodeDuration + " Min" : "Indefinida"}</li>
                         <li><span className="desc-item">{"Estúdio(s):"}</span> {studios?.join(",")}</li>
                         <li><span className="desc-item">Gênero:</span> {genres?.join(", ")}</li>
                     </ul>

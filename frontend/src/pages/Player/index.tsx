@@ -6,13 +6,14 @@ import { PlayerBox } from "../../components/PlayerBox"
 import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
 import api from "../../services/Api";
+import { useEffect } from "react";
 
 type AnimeData = {
     data:
       {
         // mal_id:number;
         trailer:{
-          embed_url: string
+          youtube_id: string;
           images:{
             large_image_url:string;
           }
@@ -62,9 +63,10 @@ export default function PlayerPage() {
               name: animeData?.title,
               studios: animeData?.studios,
               genres: animeData?.genres,
-              synopsis: episodeData?.synopsis,
+              synopsis: episodeData?.synopsis ? episodeData?.synopsis : animeData?.synopsis,
               episode: episodeId,
               episodeDuration: episodeDuration,
+              episodeTrailerYTid: animeData?.trailer.youtube_id,
           }} />
           <Comments/>
           <S.Related>
