@@ -1,5 +1,7 @@
 import * as S from "./styles"
 import { Player, Video, Ui, ClickToPlay, Spinner, Poster, Youtube} from '@vime/react';
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 interface PlayerProps {
     anime: {
@@ -19,9 +21,13 @@ interface PlayerProps {
 
 export function PlayerBox({ anime }: PlayerProps) {
 
+
     // useEffect(() => {
         //get the episode data per slug param
     // }, [anime]);
+
+    const [receivedTrailerId, setReceivedTrailerId] = useState(false);
+    const [handleViewMore, setHandleViewMore] = useState(false);
 
     //making an new array with the names of the studios
     const studios = anime?.studios?.map((item) => {
@@ -32,13 +38,29 @@ export function PlayerBox({ anime }: PlayerProps) {
         return item.name
     })
 
+    useEffect(() => {
+      if(anime.episodeTrailerYTid){
+        setReceivedTrailerId(true)
+      }
+    })
+
+    function toggleViewMore () {
+      setHandleViewMore(prevState => !prevState)
+    }
+    
     return (
         <S.PlayerBoxWrapper>
             <h1>{anime.name} - Episódio {anime.episode}</h1>
             <div className="player-container">
                 <div className="player-video">
                 <Player controls>
-                    <Youtube videoId={anime.episodeTrailerYTid} />
+                    {
+                      receivedTrailerId 
+                      ?
+                      <Youtube videoId={anime.episodeTrailerYTid!}/>
+                      :
+                      <h1>Carregando...</h1>
+                    }
                   <Ui>
                     {/* Vime components. */}
                     <Spinner />
@@ -53,8 +75,16 @@ export function PlayerBox({ anime }: PlayerProps) {
                         <li><span className="desc-item">Gênero:</span> {genres?.join(", ")}</li>
                     </ul>
                     <p>
-                        <span className="desc-item">Sinopse:</span>
-                        {anime.synopsis}
+                      <span className="desc-item">Sinopse:</span>
+                        {
+                          //To do: fix the link view more position
+                          handleViewMore 
+                          ?
+                           anime.synopsis
+                          :
+                           anime?.synopsis?.substring(0, 350) + " [...]"
+                        }
+                        <Link to="#" onClick={toggleViewMore}> View more</Link>                          
                     </p>
                 </div>
             </div>
