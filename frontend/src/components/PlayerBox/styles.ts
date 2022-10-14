@@ -27,7 +27,7 @@ export const PlayerBoxWrapper = styled.section`
 
             display: flex;
             flex-direction: column;
-            gap: 3rem;
+            gap: 2rem;
 
             .desc-item {
                 font-family: 'Rubik', sans-serif;
@@ -56,7 +56,7 @@ export const PlayerBoxWrapper = styled.section`
                 display: flex;
                 flex-direction: column;
                 gap: .8rem;
-            }
+              }
         }
     }   
 `

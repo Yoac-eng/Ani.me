@@ -33,6 +33,7 @@ type AnimeData = {
 type EpisodeData = {
     data:
       {
+        title: string;
         duration: number;
         synopsis: string;
       }
@@ -65,6 +66,7 @@ export default function PlayerPage() {
               genres: animeData?.genres,
               synopsis: episodeData?.synopsis ? episodeData?.synopsis : animeData?.synopsis,
               episode: episodeId,
+              episodeTitle: episodeData?.title,
               episodeDuration: episodeDuration,
               episodeTrailerYTid: animeData?.trailer.youtube_id,
           }} />

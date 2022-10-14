@@ -14,6 +14,7 @@ interface PlayerProps {
         }[]
         synopsis?: string;
         episode?: string;
+        episodeTitle?: string;
         episodeDuration?: number;
         episodeTrailerYTid?: string;
     }
@@ -50,7 +51,7 @@ export function PlayerBox({ anime }: PlayerProps) {
     
     return (
         <S.PlayerBoxWrapper>
-            <h1>{anime.name} - Episódio {anime.episode}</h1>
+            <h1>{anime.name}</h1>
             <div className="player-container">
                 <div className="player-video">
                 <Player controls>
@@ -64,27 +65,46 @@ export function PlayerBox({ anime }: PlayerProps) {
                   <Ui>
                     {/* Vime components. */}
                     <Spinner />
+                    {/* Pensar se tiro ou nao esse poster */}
                     <Poster />
                   </Ui>
                 </Player>
                 </div>
                 <div className="desc">
+                  {
+                    anime.episodeTitle
+                    ?
+                    <h1>E{anime.episode} - {anime.episodeTitle}</h1>
+                    :
+                    <h1>Episódio - {anime.episode}</h1>
+                  }
                     <ul>
-                        <li><span className="desc-item">Duração:</span> {anime.episodeDuration ? anime.episodeDuration + " Min" : "Indefinida"}</li>
+                        {
+                          anime.episodeDuration
+                          ?
+                          <li>
+                            <span className="desc-item">Duração:</span>{anime.episodeDuration + " Min"}
+                          </li>
+                          :
+                          ""
+                        }
                         <li><span className="desc-item">{"Estúdio(s):"}</span> {studios?.join(",")}</li>
                         <li><span className="desc-item">Gênero:</span> {genres?.join(", ")}</li>
                     </ul>
                     <p>
-                      <span className="desc-item">Sinopse:</span>
                         {
-                          //To do: fix the link view more position
                           handleViewMore 
                           ?
-                           anime.synopsis
+                          (<>
+                            {anime.synopsis}
+                            <Link className="viewMore-link" to="#" onClick={toggleViewMore}> View less</Link> 
+                          </>)
                           :
-                           anime?.synopsis?.substring(0, 350) + " [...]"
+                          (<>
+                            {anime?.synopsis?.substring(0, 350) + " [...]"}
+                            <Link className="viewMore-link" to="#" onClick={toggleViewMore}> View more</Link> 
+                          </>) 
                         }
-                        <Link to="#" onClick={toggleViewMore}> View more</Link>                          
                     </p>
                 </div>
             </div>
