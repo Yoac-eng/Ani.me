@@ -100,10 +100,20 @@ export function PlayerBox({ anime }: PlayerProps) {
                             <Link className="viewMore-link" to="#" onClick={toggleViewMore}> View less</Link> 
                           </>)
                           :
-                          (<>
-                            {anime?.synopsis?.substring(0, 350) + " [...]"}
-                            <Link className="viewMore-link" to="#" onClick={toggleViewMore}> View more</Link> 
-                          </>) 
+                            anime?.synopsis?.length! > 350
+                            ?
+                            (
+                            <>
+                              {anime?.synopsis?.substring(0, 350) + " [...]"}
+                              <Link className="viewMore-link" to="#" onClick={toggleViewMore}> View more</Link>
+                            </>
+                            )
+                            :
+                            (
+                            <>
+                              {anime.synopsis}
+                            </>
+                            )
                         }
                     </p>
                 </div>
