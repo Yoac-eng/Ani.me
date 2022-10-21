@@ -6,7 +6,6 @@ import { PlayerBox } from "../../components/PlayerBox"
 import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
 import api from "../../services/Api";
-import { useEffect } from "react";
 
 type AnimeData = {
     data:
@@ -24,6 +23,7 @@ type AnimeData = {
           name:string;
         }[]
         genres: {
+          mal_id:number;
           name:string;
         }[]
         //adicionar o resto
@@ -38,10 +38,18 @@ type EpisodeData = {
         synopsis: string;
       }
 }
+
+type AnimeByGenresData = {
+    data:
+      {
+        mal_id: number;
+      }[]
+}
   
 export default function PlayerPage() {    
     const { animeId, episodeId } = useParams();
 
+    //Anime request
     const { data: anime } = useQuery<AnimeData>('animeData', async () =>{
         const response = await api.get(`anime/${animeId}`)
     
@@ -49,14 +57,32 @@ export default function PlayerPage() {
     })
     const animeData = anime?.data;
 
+    //Episode request
     const { data: episode } = useQuery<EpisodeData>('episodeData', async () =>{
         const response = await api.get(`anime/${animeId}/episodes/${episodeId}`)
     
         return response.data;
     })
     const episodeData = episode?.data;
-
     const episodeDuration = Math.floor(episodeData?.duration! / 60);
+
+    
+    //Getting the query params to the search
+    const genresIdsArray = animeData?.genres.map((item) => {
+      //Creating an array with the genresIds
+      return item.mal_id;
+    })
+    const genresIdsString = String(genresIdsArray);
+
+    //Animes search by genres
+    const { data: animesByGenres } = useQuery<AnimeByGenresData>('animesByGenresData', async () => {
+        const response = await api.get(`anime?genres=${genresIdsString}`)
+
+        return response.data;
+    })
+    console.log(animesByGenres);
+    
+
     
     return (
       <S.PlayerWrapper>
