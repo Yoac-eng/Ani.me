@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const EpisodeWrapper = styled.div`
   height: 8.5rem;
@@ -8,21 +8,21 @@ export const EpisodeWrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  
-  #episode-banner{
+
+  #episode-banner {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
 
-    background-image: url("https://picsum.photos/200/300");
+    background-image: url('https://picsum.photos/200/300');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     height: 100%;
     width: 50%;
 
-    #episode-duration{
+    #episode-duration {
       position: absolute;
       right: 0;
       bottom: 0;
@@ -36,11 +36,11 @@ export const EpisodeWrapper = styled.div`
     }
   }
 
-  span{
+  span {
     color: var(--gray);
   }
 
-  .container{
+  .container {
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -50,27 +50,27 @@ export const EpisodeWrapper = styled.div`
     line-height: 1.7rem;
     color: var(--gray);
 
-    #anime-name{
+    #anime-name {
       width: fit-content;
-      
+
       font-size: 1.05rem;
       font-weight: 500;
     }
 
-    #anime-name:hover{
+    #anime-name:hover {
       border-bottom: 1px solid var(--gray);
     }
 
-    .minor-container{
+    .minor-container {
       display: flex;
       align-items: flex-start;
       justify-content: center;
 
-      a{
+      a {
         margin-left: auto;
       }
 
-      span{
+      span {
         display: flex;
         align-items: center;
         gap: 0.3rem;

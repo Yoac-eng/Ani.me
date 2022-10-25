@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { QueryClientProvider } from 'react-query';
+import { QueryClientProvider } from 'react-query'
 
 import { App } from './App'
-import { queryClient } from './services/queryClient';
-import { GlobalStyle } from './styles/global';
+import { queryClient } from './services/queryClient'
+import { GlobalStyle } from './styles/global'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
@@ -12,5 +12,5 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       <GlobalStyle />
       <App />
     </QueryClientProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 )
