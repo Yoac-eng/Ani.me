@@ -4,6 +4,7 @@ import { AnimeCard } from '../../components/AnimeCard'
 import { useQuery } from 'react-query'
 import * as S from './styles'
 import api from '../../services/Api'
+import SeeMoreButton from '../../components/SeeMoreButton'
 
 type NewSeasonsData = {
   data: {
@@ -110,9 +111,7 @@ export default function HomePage() {
             />
           ))}
         </div>
-        <Link to="/" className="button">
-          Ver mais
-        </Link>
+        <SeeMoreButton />
       </S.LastUpdates>
       <S.Recent>
         <strong className="title">Animes mais populares</strong>

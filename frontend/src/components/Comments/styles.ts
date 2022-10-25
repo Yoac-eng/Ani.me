@@ -52,23 +52,6 @@ export const CommentsWrapper = styled.section`
     }
   }
 
-  .button {
-    display: block;
-
-    margin-top: 2.5rem;
-    padding-block: 0.4rem;
-    background: var(--secondary-color);
-    border-radius: 4px;
-
-    line-height: 32px;
-    color: var(--white);
-    font-size: 1.6rem;
-    font-weight: 500;
-    font-family: 'Inter', sans-serif;
-
-    text-align: center;
-  }
-
   //This style will be rendered for articles that come after an article
   article + article {
     border-top: 2px solid var(--secondary-color);
