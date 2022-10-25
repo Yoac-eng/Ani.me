@@ -100,10 +100,8 @@ export default function HomePage() {
               <AnimeCard 
                 name={item.entry.title} 
                 lastEpisode={item.episodes[0].title} 
-                image={item.entry.images.jpg.large_image_url} 
-                pathname={'/player'}
-                animeId={item.entry.mal_id}
-                episodeId={item.episodes[0].mal_id}
+                image={item.entry.images.jpg.large_image_url}
+                hrefString={`/player/${item.entry.mal_id}/episodes/${item.episodes[0].mal_id}`}
               />
             ))
           }
@@ -120,7 +118,8 @@ export default function HomePage() {
               <AnimeCard 
                 name={item.title} 
                 image={item.images.jpg.large_image_url}
-                pathname={'/anime'}
+                hrefString={'/anime'}
+                //hrefString={'/anime/${item.mal_id}'}
               />
             ))
           }

@@ -88,8 +88,16 @@ export function PlayerBox({ anime }: PlayerProps) {
                           :
                           ""
                         }
-                        <li><span className="desc-item">{"Estúdio(s):"}</span> {studios?.join(",")}</li>
-                        <li><span className="desc-item">Gênero:</span> {genres?.join(", ")}</li>
+                        {
+                          studios?.length! > 0
+                          &&
+                          <li><span className="desc-item">{"Estúdio(s):"}</span> {studios?.join(",")}</li>
+                        }
+                        {
+                          genres?.length! > 0
+                          && 
+                          <li><span className="desc-item">Gênero:</span> {genres?.join(", ")}</li>
+                        }
                     </ul>
                     <p>
                         {
