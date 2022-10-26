@@ -5,6 +5,7 @@ import { useQuery } from 'react-query'
 import * as S from './styles'
 import api from '../../services/Api'
 import SeeMoreButton from '../../components/SeeMoreButton'
+import { useState } from 'react'
 
 type NewSeasonsData = {
   data: {
@@ -48,6 +49,15 @@ type PopularAnimeData = {
 }
 
 export default function HomePage() {
+  // States and functions to deal with the See more button
+  const [smallerSlice, setSmallerSlice] = useState(true)
+  const [seeMoreButtonStatus, setSeeMoreButtonStatus] = useState(false)
+
+  function toggleSliceSize() {
+    setSmallerSlice((prevState) => !prevState)
+    setSeeMoreButtonStatus((prevState) => !prevState)
+  }
+
   // Getting new Anime season data
   const { data: anime } = useQuery<NewSeasonsData>(
     'animeSeasonsData',
@@ -101,7 +111,7 @@ export default function HomePage() {
       <S.LastUpdates>
         <strong className="title">Últimas atualizações</strong>
         <div className="grid">
-          {episodesDataList?.slice(0, 6).map((item) => (
+          {episodesDataList?.slice(0, smallerSlice ? 6 : 12).map((item) => (
             <AnimeCard
               key={item.entry.title}
               name={item.entry.title}
@@ -111,7 +121,10 @@ export default function HomePage() {
             />
           ))}
         </div>
-        <SeeMoreButton />
+        <SeeMoreButton
+          onClick={toggleSliceSize}
+          seeMoreButtonStatus={seeMoreButtonStatus}
+        />
       </S.LastUpdates>
       <S.Recent>
         <strong className="title">Animes mais populares</strong>

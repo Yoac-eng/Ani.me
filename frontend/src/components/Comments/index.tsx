@@ -17,37 +17,37 @@ export function Comments() {
       imgSrc: '/testando.jpg',
       name: 'Daniel Cazé',
       commentary:
-        '  transar de ladinho é mt poggers a piroca entrando e saindo kekw ai tu da uma segurada no peitinho e dale na metelancia mid gap only bota a mão no pescocinho dela e tome micro dif o foda eh so quando o dick escapa da pussy ai é omegalul total.',
+        'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum eius perferendis deserunt nisi tempora pariatur ipsa. Perferendis mollitia molestiae impedit officia. Tempore sed nesciunt minus quod, porro reprehenderit laboriosam eos.',
     },
     {
       imgSrc: '/testando.jpg',
       name: 'Daniel Cazé',
       commentary:
-        '  transar de ladinho é mt poggers a piroca entrando e saindo kekw ai tu da uma segurada no peitinho e dale na metelancia mid gap only bota a mão no pescocinho dela e tome micro dif o foda eh so quando o dick escapa da pussy ai é omegalul total.',
+        'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum eius perferendis deserunt nisi tempora pariatur ipsa. Perferendis mollitia molestiae impedit officia. Tempore sed nesciunt minus quod, porro reprehenderit laboriosam eos.',
     },
     {
       imgSrc: '/testando.jpg',
       name: 'Daniel Cazé',
       commentary:
-        '  transar de ladinho é mt poggers a piroca entrando e saindo kekw ai tu da uma segurada no peitinho e dale na metelancia mid gap only bota a mão no pescocinho dela e tome micro dif o foda eh so quando o dick escapa da pussy ai é omegalul total.',
+        'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum eius perferendis deserunt nisi tempora pariatur ipsa. Perferendis mollitia molestiae impedit officia. Tempore sed nesciunt minus quod, porro reprehenderit laboriosam eos.',
     },
     {
       imgSrc: '/testando.jpg',
       name: 'Daniel Cazé',
       commentary:
-        '  transar de ladinho é mt poggers a piroca entrando e saindo kekw ai tu da uma segurada no peitinho e dale na metelancia mid gap only bota a mão no pescocinho dela e tome micro dif o foda eh so quando o dick escapa da pussy ai é omegalul total.',
+        'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum eius perferendis deserunt nisi tempora pariatur ipsa. Perferendis mollitia molestiae impedit officia. Tempore sed nesciunt minus quod, porro reprehenderit laboriosam eos.',
     },
     {
       imgSrc: '/testando.jpg',
       name: 'Daniel Cazé',
       commentary:
-        '  transar de ladinho é mt poggers a piroca entrando e saindo kekw ai tu da uma segurada no peitinho e dale na metelancia mid gap only bota a mão no pescocinho dela e tome micro dif o foda eh so quando o dick escapa da pussy ai é omegalul total.',
+        'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum eius perferendis deserunt nisi tempora pariatur ipsa. Perferendis mollitia molestiae impedit officia. Tempore sed nesciunt minus quod, porro reprehenderit laboriosam eos.',
     },
     {
       imgSrc: '/testando.jpg',
       name: 'Daniel Cazé',
       commentary:
-        '  transar de ladinho é mt poggers a piroca entrando e saindo kekw ai tu da uma segurada no peitinho e dale na metelancia mid gap only bota a mão no pescocinho dela e tome micro dif o foda eh so quando o dick escapa da pussy ai é omegalul total.',
+        'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum eius perferendis deserunt nisi tempora pariatur ipsa. Perferendis mollitia molestiae impedit officia. Tempore sed nesciunt minus quod, porro reprehenderit laboriosam eos.',
     },
   ]
   return (
