@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
-export const EpisodeWrapper = styled.div`
+type EpisodeWrapperProps = {
+  episodeImageUrl: string
+}
+
+export const EpisodeWrapper = styled.div<EpisodeWrapperProps>`
   height: 8.5rem;
   padding: 0.5rem 0;
 
@@ -15,7 +19,7 @@ export const EpisodeWrapper = styled.div`
     align-items: center;
     justify-content: center;
 
-    background-image: url('https://picsum.photos/200/300');
+    background-image: url(${(props) => props.episodeImageUrl});
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
