@@ -39,7 +39,6 @@ type NewEpisodeData = {
 
 type PopularAnimeData = {
   data: {
-    mal_id: number
     images: {
       jpg: {
         large_image_url: string
@@ -132,10 +131,11 @@ export default function HomePage() {
         <div className="grid">
           {popularAnimesList?.slice(0, 6).map((item) => (
             <AnimeCard
-              key={item.mal_id}
+              key={item.title}
               name={item.title}
               image={item.images.jpg.large_image_url}
-              hrefString={`/anime/${item.mal_id}`}
+              hrefString={'/anime'}
+              // hrefString={'/anime/${item.mal_id}'}
             />
           ))}
         </div>
