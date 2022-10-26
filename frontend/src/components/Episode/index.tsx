@@ -3,12 +3,13 @@ import * as S from './styles'
 
 interface EpisodeProps {
   episodeInfo: {
-    name: string
-    episode: string
-    season: number
-    episodeNumber: number
+    animeId?: number
+    animeName?: string
+    episodeName?: string
+    episodeNumber?: number
+    episodeImageUrl?: string
     duration: number
-    version: string
+    type?: string
     commentaries: number
   }
 }
@@ -16,20 +17,22 @@ interface EpisodeProps {
 export default function Episode({ episodeInfo }: EpisodeProps) {
   return (
     <S.EpisodeWrapper>
-      <a id="episode-banner" href="/">
+      <a
+        id="episode-banner"
+        href={`/player/${episodeInfo.animeId}/episodes/${episodeInfo.episodeNumber}`}
+      >
         <Play to="/" size={24} />
         <div id="episode-duration">{episodeInfo.duration}m</div>
       </a>
       <div className="container">
         <a id="anime-name">
-          <span>{episodeInfo.name}</span>
+          <span>{episodeInfo.animeName}</span>
         </a>
-        <a href="/">
-          S{episodeInfo.season} E{episodeInfo.episodeNumber} -{' '}
-          {episodeInfo.episode}
+        <a href="/" id="episode-name">
+          E{episodeInfo.episodeNumber} - {episodeInfo.episodeName}
         </a>
         <div className="minor-container">
-          <span>{episodeInfo.version}</span>
+          <span>{episodeInfo.type}</span>
           <a href="/">
             <span>
               {episodeInfo.commentaries} <ChatText size={14} />

@@ -2,7 +2,6 @@ import * as S from './styles'
 import { AnimeCard } from '../../components/AnimeCard'
 import { Comments } from '../../components/Comments'
 import { PlayerBox } from '../../components/PlayerBox'
-
 import { useParams } from 'react-router-dom'
 import { useQuery } from 'react-query'
 import api from '../../services/Api'
@@ -26,7 +25,6 @@ type AnimeData = {
       mal_id: number
       name: string
     }[]
-    // adicionar o resto
   }
 }
 
@@ -40,6 +38,7 @@ type EpisodeData = {
 
 type AnimeByGenresData = {
   data: {
+    mal_id: number
     images: {
       jpg: {
         large_image_url: string
@@ -51,6 +50,7 @@ type AnimeByGenresData = {
 
 export default function PlayerPage() {
   const { animeId, episodeId } = useParams()
+  // State to store the related animes data, not the whole object
   const [relatedAnimes, setRelatedAnimes] = useState<AnimeByGenresData>()
 
   // Anime request
@@ -61,7 +61,7 @@ export default function PlayerPage() {
   })
   const animeData = anime?.data
 
-  // Episode request
+  // Episode by id request
   const { data: episode } = useQuery<EpisodeData>('episodeData', async () => {
     const response = await api.get(`anime/${animeId}/episodes/${episodeId}`)
 
@@ -114,11 +114,10 @@ export default function PlayerPage() {
             <div className="grid">
               {relatedAnimeData?.slice(0, 6).map((item) => (
                 <AnimeCard
-                  key={item.title}
+                  key={item.mal_id}
                   name={item.title}
                   image={item.images.jpg.large_image_url}
-                  hrefString={'/anime'}
-                  // hrefString={'/anime/${item.mal_id}'}
+                  hrefString={`/anime/${item.mal_id}`}
                 />
               ))}
             </div>

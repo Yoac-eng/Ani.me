@@ -1,41 +1,122 @@
 import AnimeInfo from '../../components/AnimeInfo'
 import Episode from '../../components/Episode'
 import * as S from './styles'
-import episodesList from '../../Mocks/episodesList'
 import { Comments } from '../../components/Comments'
+import { useParams } from 'react-router-dom'
+import { useQuery } from 'react-query'
+import api from '../../services/Api'
+import { useState } from 'react'
+import SeeMoreButton from '../../components/SeeMoreButton'
+
+type AnimeData = {
+  data: {
+    mal_id: number
+    images: {
+      jpg: {
+        large_image_url: string
+      }
+    }
+    trailer: {
+      youtube_id: string
+      images: {
+        medium_image_url: string
+      }
+    }
+    title: string
+    type: string
+    synopsis: string
+    episodes: number
+    studios: {
+      name: string
+    }[]
+    genres: {
+      mal_id: number
+      name: string
+    }[]
+  }
+}
+
+type EpisodeListData = {
+  data: {
+    mal_id: number
+    title: string
+  }[]
+}
 
 export default function Anime() {
+  const { animeId } = useParams()
+
+  const [smallerSlice, setSmallerSlice] = useState(true)
+  const [seeMoreButtonStatus, setSeeMoreButtonStatus] = useState(false)
+
+  function toggleSliceSize() {
+    setSmallerSlice((prevState) => !prevState)
+    setSeeMoreButtonStatus((prevState) => !prevState)
+  }
+
+  // Anime request
+  const { data: anime } = useQuery<AnimeData>('animeData', async () => {
+    const response = await api.get(`anime/${animeId}`)
+
+    return response.data
+  })
+  const animeData = anime?.data
+
+  // Episodes request
+  const { data: episodes } = useQuery<EpisodeListData>(
+    'episodesList',
+    async () => {
+      const response = await api.get(`anime/${animeId}/episodes`)
+
+      return response.data
+    },
+  )
+  const episodesList = episodes?.data
+
   return (
     <S.AnimeWrapper>
       <S.AnimeBanner>
-        <img id="bg-image" src="testando.jpg" alt="" />
-        <img id="main-image" src="testando.jpg" alt="" />
+        <img
+          id="bg-image"
+          src={animeData?.images?.jpg.large_image_url}
+          alt=""
+        />
+        <img
+          id="main-image"
+          src={animeData?.images?.jpg.large_image_url}
+          alt=""
+        />
       </S.AnimeBanner>
       <AnimeInfo
         anime={{
-          name: 'Darling in the franxx',
-          videos: 87,
-          version: 'Dublado',
-          studio: 'Trigger',
-          genders: ['Drama', 'Ficcao', 'Romance'],
-          synopsis:
-            'Meu nome é Sasuke Uchiha. Eu odeio um monte de coisas. O que eu tenho não é um sonho, porque eu vou torná-lo uma realidade. Vou restaurar meu clã, e matar um certo alguém.',
+          name: animeData?.title,
+          videos: animeData?.episodes,
+          type: animeData?.type,
+          studios: animeData?.studios,
+          genres: animeData?.genres,
+          synopsis: animeData?.synopsis,
+          firstEpisodeLink: `/player/${animeData?.mal_id}/episodes/1`,
         }}
       />
-      {episodesList.map((item) => (
+      {episodesList?.slice(0, smallerSlice ? 6 : 9).map((item) => (
         <Episode
-          key={item.episode}
+          key={item.mal_id}
           episodeInfo={{
-            name: item.name,
-            episode: item.episode,
-            season: item.season,
-            episodeNumber: item.episodeNumber,
-            duration: item.duration,
-            version: item.version,
-            commentaries: item.commentaries,
+            animeId: animeData?.mal_id,
+            animeName: animeData?.title,
+            episodeName: item.title,
+            episodeNumber: item.mal_id,
+            episodeImageUrl: animeData?.trailer.images.medium_image_url,
+            duration: 23,
+            type: animeData?.type,
+            commentaries: 6,
           }}
         />
       ))}
+      <SeeMoreButton
+        onClick={toggleSliceSize}
+        seeMoreButtonStatus={seeMoreButtonStatus}
+      />
       <Comments />
     </S.AnimeWrapper>
   )

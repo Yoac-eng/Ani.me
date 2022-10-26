@@ -43,7 +43,11 @@ export const EpisodeWrapper = styled.div`
   .container {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.5rem;
+
+    width: 45%;
+
+    white-space: nowrap;
 
     font-family: 'Inter', sans-serif;
     font-size: 1.2rem;
@@ -55,10 +59,18 @@ export const EpisodeWrapper = styled.div`
 
       font-size: 1.05rem;
       font-weight: 500;
+
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     #anime-name:hover {
       border-bottom: 1px solid var(--gray);
+    }
+
+    #episode-name {
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .minor-container {

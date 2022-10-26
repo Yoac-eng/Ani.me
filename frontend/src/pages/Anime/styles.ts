@@ -12,9 +12,10 @@ export const AnimeBanner = styled.figure`
 
   #bg-image {
     height: 35rem;
+    width: 100%;
 
-    filter: blur(4px);
-    -webkit-filter: blur(4px);
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
   }
 
   #main-image {

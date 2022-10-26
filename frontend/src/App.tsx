@@ -20,7 +20,7 @@ export function App() {
           />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/anime" element={<Anime />} />
+          <Route path="/anime/:animeId" element={<Anime />} />
         </Routes>
       </BrowserRouter>
       <Footer />

@@ -1,41 +1,84 @@
 import { Play } from 'phosphor-react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import * as S from './styles'
 
 interface AnimeInfoProps {
   anime: {
-    name: string
-    videos: number
-    version: string
-    studio: string
-    genders: Array<string>
-    synopsis: string
+    name?: string
+    videos?: number
+    type?: string
+    studios?: {
+      name: string
+    }[]
+    genres?: {
+      name: string
+    }[]
+    synopsis?: string
+    firstEpisodeLink?: string
   }
 }
 
 export default function AnimeInfo({ anime }: AnimeInfoProps) {
+  // state and function do handle view more actions
+  const [handleViewMore, setHandleViewMore] = useState(false)
+  function toggleViewMore() {
+    setHandleViewMore((prevState) => !prevState)
+  }
+
+  // making an new array with the names of the studios
+  const studios = anime?.studios?.map((item) => {
+    return item.name
+  })
+
+  // making an new array with the names of the genres
+  const genres = anime?.genres?.map((item) => {
+    return item.name
+  })
+
   return (
     <S.AnimeInfoWrapper>
       <h1>{anime.name}</h1>
       <span>
-        {anime.videos} Vídeos ◽ {anime.version}
+        {anime.videos} Vídeos ◽ {anime.type}
       </span>
       <div className="desc">
         <ul>
-          <li>
-            <span className="desc-item">Estúdio:</span> {anime.studio}
-          </li>
-          <li>
-            <span className="desc-item">Gênero:</span>{' '}
-            {anime.genders.join(', ')}
-          </li>
+          {studios?.length! > 0 && (
+            <li>
+              <span className="desc-item">{'Estúdio(s):'}</span>{' '}
+              {studios?.join(',')}
+            </li>
+          )}
+          {genres?.length! > 0 && (
+            <li>
+              <span className="desc-item">Gênero:</span> {genres?.join(', ')}
+            </li>
+          )}
         </ul>
-        <Link to="/" className="button">
+        <Link to={anime.firstEpisodeLink!} className="button">
           <Play size={20} color="#ffffff" /> COMEÇAR A ASSISTIR S1 E1
         </Link>
         <p>
-          <span className="desc-item">Sinopse:</span>
-          {anime.synopsis}
+          {handleViewMore ? (
+            <>
+              {anime.synopsis}
+              <Link className="viewMore-link" to="#" onClick={toggleViewMore}>
+                {' '}
+                View less
+              </Link>
+            </>
+          ) : anime?.synopsis?.length! > 350 ? (
+            <>
+              {anime?.synopsis?.substring(0, 350) + ' [...]'}
+              <Link className="viewMore-link" to="#" onClick={toggleViewMore}>
+                {' '}
+                View more
+              </Link>
+            </>
+          ) : (
+            <>{anime.synopsis}</>
+          )}
         </p>
       </div>
     </S.AnimeInfoWrapper>
