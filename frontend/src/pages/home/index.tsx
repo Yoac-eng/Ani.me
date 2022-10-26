@@ -1,47 +1,145 @@
 import { Link } from 'react-router-dom'
 import AlphabetMenu from '../../components/AlphabetMenu'
 import { AnimeCard } from '../../components/AnimeCard'
+import { useQuery } from 'react-query'
 import * as S from './styles'
+import api from '../../services/Api'
+import SeeMoreButton from '../../components/SeeMoreButton'
+import { useState } from 'react'
+
+type NewSeasonsData = {
+  data: {
+    trailer: {
+      images: {
+        large_image_url: string
+      }
+    }
+    title: string
+    synopsis: string
+  }[]
+}
+
+type NewEpisodeData = {
+  data: {
+    entry: {
+      mal_id: number
+      images: {
+        jpg: {
+          large_image_url: string
+        }
+      }
+      title: string
+    }
+    episodes: {
+      mal_id: number
+      title: string
+    }[]
+  }[]
+}
+
+type PopularAnimeData = {
+  data: {
+    mal_id: number
+    images: {
+      jpg: {
+        large_image_url: string
+      }
+    }
+    title: string
+  }[]
+}
 
 export default function HomePage() {
-    return (
-        <S.HomeWrapper>
-            <AlphabetMenu/>
-            <S.HomeMain>
-                <header>
-                    <strong className="title">Últimas novidades</strong>
-                    <p>O que você vai assistir hoje?</p>
-                </header>
-                <Link to="#">
-                    <div>
-                        <strong>ONE PUNCH MAN TERÁ 3 TEMPORADA</strong>
-                        <p>Como relatado anteriormente, a franquia baseada no mangá escrito por ONE e ilustrado por Yusuke Murata, One Punch […]</p>
-                    </div>
-                </Link>
-            </S.HomeMain>
-            <S.LastUpdates>
-                <strong className="title">Últimas atualizações</strong>
-                <div className='grid'>
-                    {
-                        [1, 2, 3, 4, 5, 6].slice(0, 6).map((item) => (
-                            <AnimeCard name={'JOJO'} lastEpisode={24} />
-                        ))
-                    }
-                </div>
-                <Link to="/" className="button">
-                    Ver mais
-                </Link>
-            </S.LastUpdates>
-            <S.Recent>
-                <strong className="title">Animes recentes</strong>
-                <div className='grid'>
-                    {
-                        [1, 2, 3, 4, 5, 6].slice(0, 6).map((item) => (
-                            <AnimeCard name={'One Piece'} />
-                        ))
-                    }
-                </div>
-            </S.Recent>
-        </S.HomeWrapper>
-    )
+  // States and functions to deal with the See more button
+  const [smallerSlice, setSmallerSlice] = useState(true)
+  const [seeMoreButtonStatus, setSeeMoreButtonStatus] = useState(false)
+
+  function toggleSliceSize() {
+    setSmallerSlice((prevState) => !prevState)
+    setSeeMoreButtonStatus((prevState) => !prevState)
+  }
+
+  // Getting new Anime season data
+  const { data: anime } = useQuery<NewSeasonsData>(
+    'animeSeasonsData',
+    async () => {
+      const response = await api.get('seasons/upcoming')
+
+      return response.data
+    },
+  )
+  const animeNewSeason = anime?.data[0]
+
+  // Getting new Episodes data
+  const { data: recentEpisodes } = useQuery<NewEpisodeData>(
+    'newEpisodeData',
+    async () => {
+      const response = await api.get('watch/episodes')
+
+      return response.data
+    },
+  )
+  const episodesDataList = recentEpisodes?.data
+
+  // Getting Animes by popularity
+  const { data: popularAnimes } = useQuery<PopularAnimeData>(
+    'popularAnimeData',
+    async () => {
+      const response = await api.get('top/anime?filter=bypopularity')
+
+      return response.data
+    },
+  )
+  const popularAnimesList = popularAnimes?.data
+
+  return (
+    <S.HomeWrapper>
+      <AlphabetMenu />
+      <S.HomeMain
+        trailerBackgroundImage={animeNewSeason?.trailer.images.large_image_url}
+      >
+        <header>
+          <strong className="title">Últimas novidades</strong>
+          <p>O que você vai assistir hoje?</p>
+        </header>
+        <Link to="#">
+          <div>
+            <strong>{animeNewSeason?.title} TERÁ NOVA TEMPORADA</strong>
+            <p>{animeNewSeason?.synopsis.substring(0, 250)}[...]</p>
+          </div>
+        </Link>
+      </S.HomeMain>
+      <S.LastUpdates>
+        <strong className="title">Últimas atualizações</strong>
+        <div className="grid">
+          {episodesDataList?.slice(0, smallerSlice ? 6 : 12).map((item) => (
+            <AnimeCard
+              key={item.entry.title}
+              name={item.entry.title}
+              lastEpisode={item.episodes[0].title}
+              image={item.entry.images.jpg.large_image_url}
+              hrefString={`/player/${item.entry.mal_id}/episodes/${item.episodes[0].mal_id}`}
+            />
+          ))}
+        </div>
+        <SeeMoreButton
+          onClick={toggleSliceSize}
+          seeMoreButtonStatus={seeMoreButtonStatus}
+        />
+      </S.LastUpdates>
+      <S.Recent>
+        <strong className="title">Animes mais populares</strong>
+        <div className="grid">
+          {popularAnimesList?.slice(0, 6).map((item) => (
+            <AnimeCard
+              key={item.mal_id}
+              name={item.title}
+              image={item.images.jpg.large_image_url}
+              hrefString={`/anime/${item.mal_id}`}
+            />
+          ))}
+        </div>
+      </S.Recent>
+    </S.HomeWrapper>
+  )
 }

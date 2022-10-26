@@ -1,18 +1,25 @@
 import * as S from './styles'
 
 interface AnimeCardProps {
-    name: string
-    lastEpisode?: number
+  name: string
+  lastEpisode?: string
+  image?: string
+  // pathname: string
+  // animeId?: number
+  // episodeId?: number
+  hrefString?: string
 }
 
-export function AnimeCard({ name, lastEpisode }: AnimeCardProps) {
-    return (
-        <S.AnimeCardWrapper>
-            {/* Decidir se troco isso pra link ou não */}
-            <a href="/player">
-                {lastEpisode && <p>Episódio {lastEpisode}</p>}
-            </a>
-            <strong>{name}</strong>
-        </S.AnimeCardWrapper>
-    )
+export function AnimeCard({
+  name,
+  lastEpisode,
+  image,
+  hrefString,
+}: AnimeCardProps) {
+  return (
+    <S.AnimeCardWrapper backgroundImage={image}>
+      <a href={hrefString}>{lastEpisode && <p>{lastEpisode}</p>}</a>
+      <strong>{name}</strong>
+    </S.AnimeCardWrapper>
+  )
 }

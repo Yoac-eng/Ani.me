@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const RegisterWrapper = styled.div`
-    padding-top: 8rem;
+  padding-top: 8rem;
 `
 
 export const Form = styled.form`
@@ -21,7 +21,7 @@ export const Form = styled.form`
     margin-bottom: 3rem;
   }
 
-  .form-inputs{
+  .form-inputs {
     width: 100%;
 
     display: flex;
@@ -30,13 +30,13 @@ export const Form = styled.form`
 
     input {
       padding: 1rem 0.5rem 1.5rem 0.5rem;
-      
+
       letter-spacing: 0.07rem;
       color: var(--white);
       font-weight: 500;
       font-size: 1.4rem;
       font-family: 'Inter', sans-serif;
-      
+
       outline: none;
       border: none;
       border-bottom: 1px solid var(--gray);
@@ -45,12 +45,12 @@ export const Form = styled.form`
     }
   }
 
-  button{
+  button {
     display: block;
     width: 100%;
 
     margin-top: 3.2rem;
-    padding-block: .4rem;
+    padding-block: 0.4rem;
     background: var(--primary-color);
     border: none;
 
@@ -58,10 +58,10 @@ export const Form = styled.form`
     color: var(--white);
     font-size: 1.4rem;
     font-weight: 500;
-    font-family: "Inter", sans-serif;
+    font-family: 'Inter', sans-serif;
 
     text-align: center;
-    
+
     cursor: pointer;
   }
 `
@@ -74,32 +74,31 @@ export const AccountInfo = styled.div`
   gap: 3.5rem;
 
   text-align: center;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   color: var(--gray);
 
-  .agreement-info{
+  .agreement-info {
     font-weight: 400;
     font-size: 1.1rem;
 
-    a{
+    a {
       color: var(--white);
     }
-    a:hover{
+    a:hover {
       border-bottom: 1px solid var(--white);
     }
   }
-  
-  .login-info{
+
+  .login-info {
     color: var(--white);
     font-weight: 400;
     font-size: 1.4rem;
 
-    a{
+    a {
       color: var(--primary-color);
     }
-    a:hover{
+    a:hover {
       border-bottom: 1px solid var(--primary-color);
     }
   }
-
 `
