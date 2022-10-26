@@ -6,6 +6,7 @@ import Home from './pages/home'
 import Login from './pages/Login'
 import Player from './pages/Player'
 import Register from './pages/Register'
+import SearchAnime from './pages/SearchAnime'
 
 export function App() {
   return (
@@ -21,6 +22,7 @@ export function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/anime/:animeId" element={<Anime />} />
+          <Route path="/search" element={<SearchAnime />} />
         </Routes>
       </BrowserRouter>
       <Footer />
