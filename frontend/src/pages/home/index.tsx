@@ -39,6 +39,7 @@ type NewEpisodeData = {
 
 type PopularAnimeData = {
   data: {
+    mal_id: number
     images: {
       jpg: {
         large_image_url: string
@@ -134,8 +135,7 @@ export default function HomePage() {
               key={item.title}
               name={item.title}
               image={item.images.jpg.large_image_url}
-              hrefString={'/anime'}
-              // hrefString={'/anime/${item.mal_id}'}
+              hrefString={`/anime/${item.mal_id}`}
             />
           ))}
         </div>

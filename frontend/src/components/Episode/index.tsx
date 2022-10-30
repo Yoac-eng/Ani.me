@@ -16,7 +16,13 @@ interface EpisodeProps {
 
 export default function Episode({ episodeInfo }: EpisodeProps) {
   return (
-    <S.EpisodeWrapper episodeImageUrl={episodeInfo.episodeImageUrl!}>
+    <S.EpisodeWrapper
+      episodeImageUrl={
+        episodeInfo.episodeImageUrl!
+          ? episodeInfo.episodeImageUrl!
+          : '/bigImageNotFound.jpeg'
+      }
+    >
       <a
         id="episode-banner"
         href={`/player/${episodeInfo.animeId}/episodes/${episodeInfo.episodeNumber}`}

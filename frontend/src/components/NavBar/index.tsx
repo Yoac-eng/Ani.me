@@ -116,14 +116,14 @@ export default function NavBar() {
         <Link onClick={toggleMenu} to="/login">
           Login
         </Link>
-        <Link onClick={toggleMenu} to="/">
-          Lista
+        <Link onClick={toggleMenu} to="/register">
+          Criar conta
         </Link>
-        <Link onClick={toggleMenu} to="/">
-          Gêneros
-        </Link>
-        <Link onClick={toggleMenu} to="/">
-          Novos episódios
+        <Link
+          onClick={toggleMenu}
+          to={`/anime/${Math.floor(Math.random() * 1000)}`}
+        >
+          Anime aleatório
         </Link>
       </menu>
     </S.NavBarWrapper>
