@@ -121,7 +121,7 @@ export default function NavBar() {
         </Link>
         <Link
           onClick={toggleMenu}
-          to={`/anime/${Math.floor(Math.random() * 1000)}`}
+          to={`/anime/${Math.floor(Math.random() * 10000)}`}
         >
           Anime aleatório
         </Link>

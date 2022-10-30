@@ -113,10 +113,12 @@ export default function Anime() {
           }}
         />
       ))}
-      <SeeMoreButton
-        onClick={toggleSliceSize}
-        seeMoreButtonStatus={seeMoreButtonStatus}
-      />
+      {episodesList?.length !== 0 && (
+        <SeeMoreButton
+          onClick={toggleSliceSize}
+          seeMoreButtonStatus={seeMoreButtonStatus}
+        />
+      )}
       <Comments />
     </S.AnimeWrapper>
   )
