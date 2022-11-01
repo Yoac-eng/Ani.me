@@ -32,11 +32,15 @@ export default function AlphabetMenu() {
 
   return (
     <S.ScrollMenu>
-      <Link className="scroll-element showall-element" to="/">
+      <Link className="scroll-element showall-element" to="/search">
         Todos
       </Link>
       {Alphabet.map((item) => (
-        <Link key={item} className="scroll-element" to="/">
+        <Link
+          key={item}
+          className="scroll-element"
+          to={`/search?letter=${item.toLowerCase()}`}
+        >
           {item}
         </Link>
       ))}

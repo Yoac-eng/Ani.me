@@ -113,7 +113,7 @@ export default function Anime() {
           }}
         />
       ))}
-      {episodesList?.length !== 0 && (
+      {episodesList?.length! >= 6 && (
         <SeeMoreButton
           onClick={toggleSliceSize}
           seeMoreButtonStatus={seeMoreButtonStatus}
