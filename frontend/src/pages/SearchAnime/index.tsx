@@ -2,6 +2,7 @@ import { useQuery } from 'react-query'
 import { useSearchParams } from 'react-router-dom'
 import AlphabetMenu from '../../components/AlphabetMenu'
 import { AnimeCard } from '../../components/AnimeCard'
+import ReactLoading from 'react-loading'
 import api from '../../services/Api'
 import * as S from './styles'
 
@@ -34,23 +35,25 @@ export default function SearchAnime() {
   )
   const animeData = animeSearchByFirstLetter?.data
 
-  if (isLoading) return <h1>Loading...</h1>
-
   return (
     <S.SearchAnimeWrapper>
       <AlphabetMenu />
       <S.SearchResultsWrapper>
         <strong className="title">Resultados da busca: </strong>
-        <div className="grid">
-          {animeData?.slice(0, 12).map((item) => (
-            <AnimeCard
-              key={item.title}
-              name={item.title}
-              image={item.images.jpg.large_image_url}
-              hrefString={`/anime/${item.mal_id}`}
-            />
-          ))}
-        </div>
+        {isLoading ? (
+          <ReactLoading type={'spin'} color={'#00A3FF'} />
+        ) : (
+          <div className="grid">
+            {animeData?.slice(0, 12).map((item) => (
+              <AnimeCard
+                key={item.title}
+                name={item.title}
+                image={item.images.jpg.large_image_url}
+                hrefString={`/anime/${item.mal_id}`}
+              />
+            ))}
+          </div>
+        )}
       </S.SearchResultsWrapper>
     </S.SearchAnimeWrapper>
   )
