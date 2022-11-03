@@ -9,7 +9,7 @@ export default function NotFound() {
       <div id="notfound-label">
         <h1>Algo está errado aqui.</h1>
         <p>
-          Não conseguimos encontrar essa página, tente voltar pra{' '}
+          Não conseguimos encontrar essa página, tente voltar à{' '}
           <Link className="page-link" to="/">
             Página Inicial
           </Link>

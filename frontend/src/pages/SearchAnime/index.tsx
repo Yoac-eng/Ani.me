@@ -22,8 +22,10 @@ export default function SearchAnime() {
   const searchParam = searchParams.get('letter') || ''
 
   // Anime request
-  const { data: animeSearchByFirstLetter } = useQuery<AnimeSearch>(
-    'animeSearchByFirstLetter',
+  const { data: animeSearchByFirstLetter, isLoading } = useQuery<AnimeSearch>(
+    // Using searchParam as the id for the request
+    // Every time it changes it will do another request
+    ['animeSearchByFirstLetter', searchParam],
     async () => {
       const response = await api.get(`anime?letter=${searchParam}`)
 
@@ -31,6 +33,8 @@ export default function SearchAnime() {
     },
   )
   const animeData = animeSearchByFirstLetter?.data
+
+  if (isLoading) return <h1>Loading...</h1>
 
   return (
     <S.SearchAnimeWrapper>
