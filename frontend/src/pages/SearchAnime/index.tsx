@@ -5,6 +5,7 @@ import { AnimeCard } from '../../components/AnimeCard'
 import ReactLoading from 'react-loading'
 import api from '../../services/Api'
 import * as S from './styles'
+import { Question } from 'phosphor-react'
 
 type AnimeSearch = {
   data: {
@@ -20,17 +21,27 @@ type AnimeSearch = {
 
 export default function SearchAnime() {
   const [searchParams, setSearchParams] = useSearchParams()//eslint-disable-line
-  const searchParam = searchParams.get('letter') || ''
+  const letterSearchParam = searchParams.get('letter') || ''
+  const stringSearchParam = searchParams.get('q') || ''
 
   // Anime request
   const { data: animeSearchByFirstLetter, isLoading } = useQuery<AnimeSearch>(
-    // Using searchParam as the id for the request
+    // Using letterSearchParam and stringSearchParam as the id for the request
     // Every time it changes it will do another request
-    ['animeSearchByFirstLetter', searchParam],
-    async () => {
-      const response = await api.get(`anime?letter=${searchParam}`)
+    ['animeSearchByFirstLetter', [letterSearchParam, stringSearchParam]],
 
-      return response.data
+    async () => {
+      if (stringSearchParam !== '') {
+        const byStringSearchResponse = await api.get(
+          `anime?q=${stringSearchParam}&order_by=popularity`,
+        )
+        return byStringSearchResponse.data
+      } else {
+        const byLetterSearchResponse = await api.get(
+          `anime?letter=${letterSearchParam}`,
+        )
+        return byLetterSearchResponse.data
+      }
     },
   )
   const animeData = animeSearchByFirstLetter?.data
@@ -41,7 +52,16 @@ export default function SearchAnime() {
       <S.SearchResultsWrapper>
         <strong className="title">Resultados da busca: </strong>
         {isLoading ? (
-          <ReactLoading type={'spin'} color={'#00A3FF'} />
+          <ReactLoading
+            className="loading-stuff"
+            type={'spin'}
+            color={'#00A3FF'}
+          />
+        ) : animeData?.length === 0 ? (
+          <div className="not-found-container">
+            <Question size={32} color="#ffffff" />
+            <strong className="not-found-message">Sem resultados</strong>
+          </div>
         ) : (
           <div className="grid">
             {animeData?.slice(0, 12).map((item) => (

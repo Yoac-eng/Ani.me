@@ -55,16 +55,19 @@ export default function Anime() {
   }
 
   // Anime request
-  const { data: anime } = useQuery<AnimeData>('animeData', async () => {
-    const response = await api.get(`anime/${animeId}`)
+  const { data: anime } = useQuery<AnimeData>(
+    ['animeData', animeId],
+    async () => {
+      const response = await api.get(`anime/${animeId}`)
 
-    return response.data
-  })
+      return response.data
+    },
+  )
   const animeData = anime?.data
 
   // Episodes request
   const { data: episodes } = useQuery<EpisodeListData>(
-    'episodesList',
+    ['episodesList', animeId],
     async () => {
       const response = await api.get(`anime/${animeId}/episodes`)
 

@@ -9,6 +9,12 @@ import { useState } from 'react'
 
 type NewSeasonsData = {
   data: {
+    mal_id: number
+    images: {
+      jpg: {
+        large_image_url: string
+      }
+    }
     trailer: {
       images: {
         large_image_url: string
@@ -96,13 +102,17 @@ export default function HomePage() {
     <S.HomeWrapper>
       <AlphabetMenu />
       <S.HomeMain
-        trailerBackgroundImage={animeNewSeason?.trailer.images.large_image_url}
+        trailerBackgroundImage={
+          animeNewSeason?.trailer.images.large_image_url
+            ? animeNewSeason?.trailer.images.large_image_url
+            : animeNewSeason?.images.jpg.large_image_url
+        }
       >
         <header>
           <strong className="title">Últimas novidades</strong>
           <p>O que você vai assistir hoje?</p>
         </header>
-        <Link to="#">
+        <Link to={`/anime/${animeNewSeason?.mal_id}`}>
           <div>
             <strong>{animeNewSeason?.title} TERÁ NOVA TEMPORADA</strong>
             <p>{animeNewSeason?.synopsis.substring(0, 250)}[...]</p>

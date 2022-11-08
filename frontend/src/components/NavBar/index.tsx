@@ -1,5 +1,5 @@
 import * as S from './styles'
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { List, MagnifyingGlass, X } from 'phosphor-react'
 import { Link, useLocation } from 'react-router-dom'
 
@@ -8,6 +8,7 @@ export default function NavBar() {
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [isScrollingUp, setIsScrollingUp] = useState(false)
   const [navIconsDisplay, setNavIconsDisplay] = useState(true)
+  const [searchInput, setSearchInput] = useState('')
 
   // Check which page the navbar is on and display or not the icons
   const RouteLocation = useLocation()
@@ -52,6 +53,11 @@ export default function NavBar() {
     // Store the offset on the variable so in the next check it will be
     // the new scroll offset comparing to the last scroll top
     lastScrollTop = offset <= 0 ? 0 : offset
+  }
+
+  // Handle Input change and change the state
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setSearchInput(event.target.value)
   }
 
   useEffect(() => {
@@ -107,7 +113,13 @@ export default function NavBar() {
         }
       </header>
       <form id="search-bar" action="">
-        <input type="text" placeholder="Buscar" />
+        <input
+          type="text"
+          value={searchInput}
+          placeholder="Buscar"
+          onChange={handleChange}
+        />
+        <Link to={`/search?q=${searchInput}`}>teste</Link>
       </form>
       <menu>
         <Link onClick={toggleMenu} to="/">
