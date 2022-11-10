@@ -1,7 +1,7 @@
 import * as S from './styles'
 import React, { useState, useEffect } from 'react'
-import { List, MagnifyingGlass, X } from 'phosphor-react'
-import { Link, useLocation } from 'react-router-dom'
+import { CaretDown, List, MagnifyingGlass, X } from 'phosphor-react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 export default function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -9,6 +9,8 @@ export default function NavBar() {
   const [isScrollingUp, setIsScrollingUp] = useState(false)
   const [navIconsDisplay, setNavIconsDisplay] = useState(true)
   const [searchInput, setSearchInput] = useState('')
+
+  const navigate = useNavigate()
 
   // Check which page the navbar is on and display or not the icons
   const RouteLocation = useLocation()
@@ -60,6 +62,25 @@ export default function NavBar() {
     setSearchInput(event.target.value)
   }
 
+  // Handle form submit to preventDefault behavior
+  function handleSubmit(event: React.FormEvent) {
+    event.preventDefault()
+  }
+
+  // Handle user enter key press
+  function handleEnterKeyPress(event: React.KeyboardEvent) {
+    if (event.key === 'Enter') {
+      handleSearch()
+    }
+  }
+
+  // Handle the user search action itself
+  function handleSearch() {
+    if (searchInput !== '') {
+      navigate(`/search?q=${searchInput}`)
+    }
+  }
+
   useEffect(() => {
     const scrollbarListener: any = window.addEventListener(
       'scroll',
@@ -85,12 +106,21 @@ export default function NavBar() {
           // Check if the icons should be displayed or not depending on which page is beeing rendered
           navIconsDisplay ? (
             <div className="icons">
-              <MagnifyingGlass
-                className="cursor-change"
-                size={24}
-                color="#ffffff"
-                onClick={toggleSearch}
-              />
+              {isSearchOpen ? (
+                <CaretDown
+                  className="cursor-change"
+                  size={24}
+                  color="#ffffff"
+                  onClick={toggleSearch}
+                />
+              ) : (
+                <MagnifyingGlass
+                  className="cursor-change"
+                  size={24}
+                  color="#ffffff"
+                  onClick={toggleSearch}
+                />
+              )}
               {isMenuOpen ? (
                 <X
                   className="cursor-change"
@@ -112,14 +142,21 @@ export default function NavBar() {
           )
         }
       </header>
-      <form id="search-bar" action="">
+      <form id="search-bar" onSubmit={handleSubmit}>
         <input
           type="text"
           value={searchInput}
-          placeholder="Buscar"
+          placeholder="Buscar animes"
           onChange={handleChange}
+          onKeyDown={handleEnterKeyPress}
         />
-        <Link to={`/search?q=${searchInput}`}>teste</Link>
+        <button onClick={handleSearch}>
+          <MagnifyingGlass
+            className="cursor-change"
+            size={24}
+            color="#ffffff"
+          />
+        </button>
       </form>
       <menu>
         <Link onClick={toggleMenu} to="/">

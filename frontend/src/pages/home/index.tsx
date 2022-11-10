@@ -6,6 +6,7 @@ import * as S from './styles'
 import api from '../../services/Api'
 import SeeMoreButton from '../../components/SeeMoreButton'
 import { useState } from 'react'
+import useScrollReset from '../../Hooks/useScrollReset'
 
 type NewSeasonsData = {
   data: {
@@ -56,6 +57,9 @@ type PopularAnimeData = {
 }
 
 export default function HomePage() {
+  // Reset window scroll when page is rendered
+  useScrollReset()
+
   // States and functions to deal with the See more button
   const [smallerSlice, setSmallerSlice] = useState(true)
   const [seeMoreButtonStatus, setSeeMoreButtonStatus] = useState(false)

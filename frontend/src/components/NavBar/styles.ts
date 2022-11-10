@@ -108,6 +108,7 @@ export const NavBarWrapper = styled.nav<NavBarProps>`
     css`
       #search-bar {
         margin-top: 0.5rem;
+        margin-bottom: 0.3rem;
         height: 3rem;
 
         animation: fade-in 500ms forwards;
@@ -128,11 +129,19 @@ export const NavBarWrapper = styled.nav<NavBarProps>`
         font-family: 'Inter', sans-serif;
 
         border: 1px solid var(--secondary-color);
-        border-radius: 3.7rem;
+        border-radius: 3.7rem 0 0 3.7rem;
 
         background-color: var(--secondary-color);
 
         outline: none;
+      }
+      #search-bar button {
+        padding: 0 1.2rem 0 1rem;
+
+        background-color: var(--primary-color);
+        border: 1px solid var(--black);
+
+        border-radius: 0 3.7rem 3.7rem 0;
       }
     `}
 `

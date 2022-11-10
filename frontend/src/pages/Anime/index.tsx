@@ -7,6 +7,7 @@ import { useQuery } from 'react-query'
 import api from '../../services/Api'
 import { useState } from 'react'
 import SeeMoreButton from '../../components/SeeMoreButton'
+import useScrollReset from '../../Hooks/useScrollReset'
 
 type AnimeData = {
   data: {
@@ -44,6 +45,9 @@ type EpisodeListData = {
 }
 
 export default function Anime() {
+  // Reset window scroll when page is rendered
+  useScrollReset()
+
   const { animeId } = useParams()
 
   const [smallerSlice, setSmallerSlice] = useState(true)

@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom'
 import { useQuery } from 'react-query'
 import api from '../../services/Api'
 import { useEffect, useState } from 'react'
+import useScrollReset from '../../Hooks/useScrollReset'
 
 type AnimeData = {
   data: {
@@ -49,6 +50,9 @@ type AnimeByGenresData = {
 }
 
 export default function PlayerPage() {
+  // Reset window scroll when page is rendered
+  useScrollReset()
+
   const { animeId, episodeId } = useParams()
   // State to store the related animes data, not the whole object
   const [relatedAnimes, setRelatedAnimes] = useState<AnimeByGenresData>()
