@@ -11,9 +11,6 @@ export const SearchResultsWrapper = styled.section`
   justify-content: center;
   flex-direction: column;
 
-  .loading-stuff {
-    margin-top: 5rem;
-  }
   .title {
     font-family: 'Rubik', sans-serif;
     font-size: 1.8rem;

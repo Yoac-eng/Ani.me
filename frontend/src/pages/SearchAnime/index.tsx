@@ -2,10 +2,10 @@ import { useQuery } from 'react-query'
 import { useSearchParams } from 'react-router-dom'
 import AlphabetMenu from '../../components/AlphabetMenu'
 import { AnimeCard } from '../../components/AnimeCard'
-import ReactLoading from 'react-loading'
 import api from '../../services/Api'
 import * as S from './styles'
 import { Question } from 'phosphor-react'
+import { Loading } from '../../components/Loading'
 
 type AnimeSearch = {
   data: {
@@ -52,11 +52,7 @@ export default function SearchAnime() {
       <S.SearchResultsWrapper>
         <strong className="title">Resultados da busca: </strong>
         {isLoading ? (
-          <ReactLoading
-            className="loading-stuff"
-            type={'spin'}
-            color={'#00A3FF'}
-          />
+          <Loading />
         ) : animeData?.length === 0 ? (
           <div className="not-found-container">
             <Question size={32} color="#ffffff" />

@@ -8,6 +8,7 @@ import api from '../../services/Api'
 import { useState } from 'react'
 import SeeMoreButton from '../../components/SeeMoreButton'
 import useScrollReset from '../../Hooks/useScrollReset'
+import { Loading } from '../../components/Loading'
 
 type AnimeData = {
   data: {
@@ -59,7 +60,7 @@ export default function Anime() {
   }
 
   // Anime request
-  const { data: anime } = useQuery<AnimeData>(
+  const { data: anime, isLoading: animeDataIsLoading } = useQuery<AnimeData>(
     ['animeData', animeId],
     async () => {
       const response = await api.get(`anime/${animeId}`)
@@ -82,29 +83,35 @@ export default function Anime() {
 
   return (
     <S.AnimeWrapper>
-      <S.AnimeBanner>
-        <img
-          id="bg-image"
-          src={animeData?.images?.jpg.large_image_url}
-          alt=""
-        />
-        <img
-          id="main-image"
-          src={animeData?.images?.jpg.large_image_url}
-          alt=""
-        />
-      </S.AnimeBanner>
-      <AnimeInfo
-        anime={{
-          name: animeData?.title,
-          videos: animeData?.episodes,
-          type: animeData?.type,
-          studios: animeData?.studios,
-          genres: animeData?.genres,
-          synopsis: animeData?.synopsis,
-          firstEpisodeLink: `/player/${animeData?.mal_id}/episodes/1`,
-        }}
-      />
+      {animeDataIsLoading ? (
+        <Loading />
+      ) : (
+        <>
+          <S.AnimeBanner>
+            <img
+              id="bg-image"
+              src={animeData?.images?.jpg.large_image_url}
+              alt=""
+            />
+            <img
+              id="main-image"
+              src={animeData?.images?.jpg.large_image_url}
+              alt=""
+            />
+          </S.AnimeBanner>
+          <AnimeInfo
+            anime={{
+              name: animeData?.title,
+              videos: animeData?.episodes,
+              type: animeData?.type,
+              studios: animeData?.studios,
+              genres: animeData?.genres,
+              synopsis: animeData?.synopsis,
+              firstEpisodeLink: `/player/${animeData?.mal_id}/episodes/1`,
+            }}
+          />
+        </>
+      )}
       {episodesList?.slice(0, smallerSlice ? 6 : 9).map((item) => (
         <Episode
           key={item.mal_id}

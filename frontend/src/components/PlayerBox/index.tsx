@@ -2,6 +2,7 @@ import * as S from './styles'
 import { Player, Ui, Spinner, Poster, Youtube } from '@vime/react'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Loading } from '../Loading'
 
 interface PlayerProps {
   anime: {
@@ -56,12 +57,10 @@ export function PlayerBox({ anime }: PlayerProps) {
             {receivedTrailerId ? (
               <Youtube videoId={anime.episodeTrailerYTid!} />
             ) : (
-              <h1>Carregando...</h1>
+              <Loading />
             )}
             <Ui>
-              {/* Vime components. */}
               <Spinner />
-              {/* Pensar se tiro ou nao esse poster */}
               <Poster />
             </Ui>
           </Player>
