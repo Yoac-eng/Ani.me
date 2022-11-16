@@ -7,6 +7,8 @@ import { useQuery } from 'react-query'
 import api from '../../services/Api'
 import { useState } from 'react'
 import SeeMoreButton from '../../components/SeeMoreButton'
+import useScrollReset from '../../Hooks/useScrollReset'
+import { Loading } from '../../components/Loading'
 
 type AnimeData = {
   data: {
@@ -44,6 +46,9 @@ type EpisodeListData = {
 }
 
 export default function Anime() {
+  // Reset window scroll when page is rendered
+  useScrollReset()
+
   const { animeId } = useParams()
 
   const [smallerSlice, setSmallerSlice] = useState(true)
@@ -55,16 +60,19 @@ export default function Anime() {
   }
 
   // Anime request
-  const { data: anime } = useQuery<AnimeData>('animeData', async () => {
-    const response = await api.get(`anime/${animeId}`)
+  const { data: anime, isLoading: animeDataIsLoading } = useQuery<AnimeData>(
+    ['animeData', animeId],
+    async () => {
+      const response = await api.get(`anime/${animeId}`)
 
-    return response.data
-  })
+      return response.data
+    },
+  )
   const animeData = anime?.data
 
   // Episodes request
   const { data: episodes } = useQuery<EpisodeListData>(
-    'episodesList',
+    ['episodesList', animeId],
     async () => {
       const response = await api.get(`anime/${animeId}/episodes`)
 
@@ -75,29 +83,35 @@ export default function Anime() {
 
   return (
     <S.AnimeWrapper>
-      <S.AnimeBanner>
-        <img
-          id="bg-image"
-          src={animeData?.images?.jpg.large_image_url}
-          alt=""
-        />
-        <img
-          id="main-image"
-          src={animeData?.images?.jpg.large_image_url}
-          alt=""
-        />
-      </S.AnimeBanner>
-      <AnimeInfo
-        anime={{
-          name: animeData?.title,
-          videos: animeData?.episodes,
-          type: animeData?.type,
-          studios: animeData?.studios,
-          genres: animeData?.genres,
-          synopsis: animeData?.synopsis,
-          firstEpisodeLink: `/player/${animeData?.mal_id}/episodes/1`,
-        }}
-      />
+      {animeDataIsLoading ? (
+        <Loading />
+      ) : (
+        <>
+          <S.AnimeBanner>
+            <img
+              id="bg-image"
+              src={animeData?.images?.jpg.large_image_url}
+              alt=""
+            />
+            <img
+              id="main-image"
+              src={animeData?.images?.jpg.large_image_url}
+              alt=""
+            />
+          </S.AnimeBanner>
+          <AnimeInfo
+            anime={{
+              name: animeData?.title,
+              videos: animeData?.episodes,
+              type: animeData?.type,
+              studios: animeData?.studios,
+              genres: animeData?.genres,
+              synopsis: animeData?.synopsis,
+              firstEpisodeLink: `/player/${animeData?.mal_id}/episodes/1`,
+            }}
+          />
+        </>
+      )}
       {episodesList?.slice(0, smallerSlice ? 6 : 9).map((item) => (
         <Episode
           key={item.mal_id}
@@ -113,10 +127,12 @@ export default function Anime() {
           }}
         />
       ))}
-      <SeeMoreButton
-        onClick={toggleSliceSize}
-        seeMoreButtonStatus={seeMoreButtonStatus}
-      />
+      {episodesList?.length! >= 6 && (
+        <SeeMoreButton
+          onClick={toggleSliceSize}
+          seeMoreButtonStatus={seeMoreButtonStatus}
+        />
+      )}
       <Comments />
     </S.AnimeWrapper>
   )

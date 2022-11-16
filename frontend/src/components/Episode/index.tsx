@@ -1,4 +1,5 @@
 import { ChatText, Play } from 'phosphor-react'
+import { Link } from 'react-router-dom'
 import * as S from './styles'
 
 interface EpisodeProps {
@@ -16,28 +17,39 @@ interface EpisodeProps {
 
 export default function Episode({ episodeInfo }: EpisodeProps) {
   return (
-    <S.EpisodeWrapper episodeImageUrl={episodeInfo.episodeImageUrl!}>
-      <a
+    <S.EpisodeWrapper
+      episodeImageUrl={
+        episodeInfo.episodeImageUrl!
+          ? episodeInfo.episodeImageUrl!
+          : '/bigImageNotFound.jpeg'
+      }
+    >
+      <Link
         id="episode-banner"
-        href={`/player/${episodeInfo.animeId}/episodes/${episodeInfo.episodeNumber}`}
+        to={`/player/${episodeInfo.animeId}/episodes/${episodeInfo.episodeNumber}`}
       >
-        <Play to="/" size={24} />
+        <Play size={24} />
         <div id="episode-duration">{episodeInfo.duration}m</div>
-      </a>
+      </Link>
       <div className="container">
-        <a id="anime-name">
+        <Link to={`/anime/${episodeInfo.animeId}`} id="anime-name">
           <span>{episodeInfo.animeName}</span>
-        </a>
-        <a href="/" id="episode-name">
+        </Link>
+        <Link
+          to={`/player/${episodeInfo.animeId}/episodes/${episodeInfo.episodeNumber}`}
+          id="episode-name"
+        >
           E{episodeInfo.episodeNumber} - {episodeInfo.episodeName}
-        </a>
+        </Link>
         <div className="minor-container">
           <span>{episodeInfo.type}</span>
-          <a href="/">
+          <Link
+            to={`/player/${episodeInfo.animeId}/episodes/${episodeInfo.episodeNumber}`}
+          >
             <span>
               {episodeInfo.commentaries} <ChatText size={14} />
             </span>
-          </a>
+          </Link>
         </div>
       </div>
     </S.EpisodeWrapper>

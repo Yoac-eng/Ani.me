@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import SeeMoreButton from '../SeeMoreButton'
 import * as S from './styles'
+import profilePicture from '../../assets/profilePicture.jpg'
 
 export function Comments() {
   // States and functions to deal with the See more button
@@ -14,37 +15,37 @@ export function Comments() {
 
   const comments: Array<any> = [
     {
-      imgSrc: '/testando.jpg',
+      imgSrc: profilePicture,
       name: 'Daniel Cazé',
       commentary:
         'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum eius perferendis deserunt nisi tempora pariatur ipsa. Perferendis mollitia molestiae impedit officia. Tempore sed nesciunt minus quod, porro reprehenderit laboriosam eos.',
     },
     {
-      imgSrc: '/testando.jpg',
+      imgSrc: profilePicture,
       name: 'Daniel Cazé',
       commentary:
         'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum eius perferendis deserunt nisi tempora pariatur ipsa. Perferendis mollitia molestiae impedit officia. Tempore sed nesciunt minus quod, porro reprehenderit laboriosam eos.',
     },
     {
-      imgSrc: '/testando.jpg',
+      imgSrc: profilePicture,
       name: 'Daniel Cazé',
       commentary:
         'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum eius perferendis deserunt nisi tempora pariatur ipsa. Perferendis mollitia molestiae impedit officia. Tempore sed nesciunt minus quod, porro reprehenderit laboriosam eos.',
     },
     {
-      imgSrc: '/testando.jpg',
+      imgSrc: profilePicture,
       name: 'Daniel Cazé',
       commentary:
         'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum eius perferendis deserunt nisi tempora pariatur ipsa. Perferendis mollitia molestiae impedit officia. Tempore sed nesciunt minus quod, porro reprehenderit laboriosam eos.',
     },
     {
-      imgSrc: '/testando.jpg',
+      imgSrc: profilePicture,
       name: 'Daniel Cazé',
       commentary:
         'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum eius perferendis deserunt nisi tempora pariatur ipsa. Perferendis mollitia molestiae impedit officia. Tempore sed nesciunt minus quod, porro reprehenderit laboriosam eos.',
     },
     {
-      imgSrc: '/testando.jpg',
+      imgSrc: profilePicture,
       name: 'Daniel Cazé',
       commentary:
         'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum eius perferendis deserunt nisi tempora pariatur ipsa. Perferendis mollitia molestiae impedit officia. Tempore sed nesciunt minus quod, porro reprehenderit laboriosam eos.',

@@ -50,7 +50,9 @@ export const HomeMain = styled.main<HomeMainProps>`
     overflow: hidden;
 
     background-image: ${(props) =>
-      props ? `url(${props.trailerBackgroundImage})` : 'none'};
+      props.trailerBackgroundImage
+        ? `url(${props.trailerBackgroundImage})`
+        : `url(${'/bigImageNotFound.jpeg'})`};
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
