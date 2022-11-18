@@ -26,7 +26,7 @@ export const NavBarWrapper = styled.nav<NavBarProps>`
   padding-bottom: 1rem;
 
   z-index: 90;
-  background-color: var(--dark-color);
+  background-color: ${({ theme }) => theme.backgroundColor};
 
   ${({ isScrollingUp }) =>
     isScrollingUp &&
@@ -34,7 +34,6 @@ export const NavBarWrapper = styled.nav<NavBarProps>`
       position: fixed;
       animation: fade-in 500ms forwards;
     `}
-
   header {
     display: flex;
     align-items: center;

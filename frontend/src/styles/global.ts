@@ -17,7 +17,11 @@ export const GlobalStyle = createGlobalStyle`
         --dark-color: #06090F;
         
         --gray: #BFBFBF;
+        --medium-gray: #525252;
+        --lighter-gray: #CACACA;
+        
         --white: #FFFFFF;
+        --lighter-white: #f5f5f5;
 
         --navbar-height: 3.2rem;
         

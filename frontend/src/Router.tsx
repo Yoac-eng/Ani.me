@@ -8,10 +8,14 @@ import Player from './pages/Player'
 import Register from './pages/Register'
 import SearchAnime from './pages/SearchAnime'
 
-export function Router() {
+interface RouterProps {
+  toggleTheme(): void
+}
+
+export function Router({ toggleTheme }: RouterProps) {
   return (
     <Routes>
-      <Route path="/" element={<DefaultLayout />}>
+      <Route path="/" element={<DefaultLayout toggleTheme={toggleTheme} />}>
         <Route path="/" element={<Home />} />
         <Route
           path="/player/:animeId/episodes/:episodeId"

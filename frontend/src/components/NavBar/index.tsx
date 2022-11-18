@@ -2,8 +2,13 @@ import * as S from './styles'
 import React, { useState, useEffect } from 'react'
 import { CaretDown, List, MagnifyingGlass, X } from 'phosphor-react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { ThemeButton } from '../ThemeButton'
 
-export default function NavBar() {
+interface NavBarProps {
+  toggleTheme(): void
+}
+
+export default function NavBar({ toggleTheme }: NavBarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [isScrollingUp, setIsScrollingUp] = useState(false)
@@ -106,6 +111,7 @@ export default function NavBar() {
           // Check if the icons should be displayed or not depending on which page is beeing rendered
           navIconsDisplay ? (
             <div className="icons">
+              <ThemeButton toggleTheme={toggleTheme}></ThemeButton>
               {isSearchOpen ? (
                 <CaretDown
                   className="cursor-change"
