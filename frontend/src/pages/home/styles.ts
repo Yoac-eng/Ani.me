@@ -19,7 +19,7 @@ export const HomeMain = styled.main<HomeMainProps>`
     font-family: 'Rubik', sans-serif;
     font-size: 1.8rem;
     line-height: 21.33px;
-    color: var(--white);
+    color: ${({ theme }) => theme.titleColor};
   }
 
   header {
@@ -32,7 +32,7 @@ export const HomeMain = styled.main<HomeMainProps>`
       font-family: 'Inter', sans-serif;
       font-size: 1.4rem;
       line-height: 16.93px;
-      color: var(--gray);
+      color: ${({ theme }) => theme.secondaryTextColor};
     }
   }
 
@@ -112,7 +112,7 @@ export const LastUpdates = styled.section`
     font-family: 'Rubik', sans-serif;
     font-size: 1.8rem;
     line-height: 21.33px;
-    color: var(--white);
+    color: ${({ theme }) => theme.titleColor};
   }
 
   .grid {
@@ -122,33 +122,16 @@ export const LastUpdates = styled.section`
     grid-template-columns: repeat(2, 1fr);
     gap: 2.755rem 2.4rem;
   }
-
-  .button {
-    display: block;
-
-    margin-top: 3.68rem;
-    padding-block: 0.4rem;
-    background: var(--secondary-color);
-    border-radius: 4px;
-
-    line-height: 32px;
-    color: var(--white);
-    font-size: 1.6rem;
-    font-weight: 500;
-    font-family: 'Inter', sans-serif;
-
-    text-align: center;
-  }
 `
 
-export const Recent = styled.section`
+export const MostPopular = styled.section`
   margin-top: 4.8rem;
 
   .title {
     font-family: 'Rubik', sans-serif;
     font-size: 1.8rem;
     line-height: 21.33px;
-    color: var(--white);
+    color: ${({ theme }) => theme.titleColor};
   }
 
   .grid {

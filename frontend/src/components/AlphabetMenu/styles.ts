@@ -23,12 +23,13 @@ export const ScrollMenu = styled.menu`
   }
 
   //Change scrollbar on -moz based browsers
-  scrollbar-color: var(--primary-color) var(--secondary-color);
+  scrollbar-color: var(--primary-color)
+    ${({ theme }) => theme.MenuBackgroundColor};
   scrollbar-width: thin;
 
   //For the rest of the browsers that use -webkit
   ::-webkit-scrollbar {
-    background-color: var(--secondary-color);
+    background-color: ${({ theme }) => theme.MenuBackgroundColor};
     height: 0.2rem;
   }
 
@@ -40,6 +41,8 @@ export const ScrollMenu = styled.menu`
     height: 2.4rem;
     width: 5.17rem;
 
+    color: ${({ theme }) => theme.titleColor};
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -50,13 +53,13 @@ export const ScrollMenu = styled.menu`
     line-height: 3.2rem;
     text-align: center;
 
-    border: 1px solid var(--secondary-color);
+    border: 1px solid ${({ theme }) => theme.MenuBackgroundColor};
     border-radius: 3.7rem;
   }
 
   .showall-element {
     width: 6.6rem;
 
-    background-color: var(--secondary-color);
+    background-color: ${({ theme }) => theme.MenuBackgroundColor};
   }
 `

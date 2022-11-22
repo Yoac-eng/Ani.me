@@ -15,7 +15,7 @@ export const SearchResultsWrapper = styled.section`
     font-family: 'Rubik', sans-serif;
     font-size: 1.8rem;
     line-height: 21.33px;
-    color: var(--white);
+    color: ${({ theme }) => theme.titleColor};
     margin-right: auto;
   }
   .not-found-container {

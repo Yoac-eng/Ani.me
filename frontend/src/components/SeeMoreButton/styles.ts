@@ -6,9 +6,9 @@ export const SeeMoreButtonWrapper = styled.button`
 
   margin-top: 2.5rem;
   padding-block: 0.4rem;
-  background: var(--secondary-color);
+  background: ${({ theme }) => theme.buttonBackgroundColor};
   border-radius: 4px;
-  border-color: var(--secondary-color);
+  border-color: ${({ theme }) => theme.buttonBackgroundColor};
 
   line-height: 32px;
   color: var(--white);

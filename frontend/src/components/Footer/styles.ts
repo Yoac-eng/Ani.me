@@ -9,5 +9,5 @@ export const Footer = styled.footer`
 
   text-align: center;
 
-  color: #bfbfbf;
+  color: ${({ theme }) => theme.secondaryTextColor};
 `
