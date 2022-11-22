@@ -7,4 +7,5 @@ export default {
   MenuBackgroundColor: 'var(--secondary-color)',
 
   cardGradient: 'linear-gradient(180deg, rgba(6, 9, 15, 0) 0%, #06090f 100%);',
+  iconColor: '#FFFFFF',
 }

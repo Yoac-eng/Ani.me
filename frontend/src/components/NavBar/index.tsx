@@ -3,9 +3,14 @@ import React, { useState, useEffect } from 'react'
 import { CaretDown, List, MagnifyingGlass, X } from 'phosphor-react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { ThemeButton } from '../ThemeButton'
+import { useTheme } from 'styled-components'
 
 interface NavBarProps {
   toggleTheme(): void
+}
+
+interface ThemeType {
+  iconColor: string
 }
 
 export default function NavBar({ toggleTheme }: NavBarProps) {
@@ -14,6 +19,9 @@ export default function NavBar({ toggleTheme }: NavBarProps) {
   const [isScrollingUp, setIsScrollingUp] = useState(false)
   const [navIconsDisplay, setNavIconsDisplay] = useState(true)
   const [searchInput, setSearchInput] = useState('')
+
+  // Get theme from theme provider
+  const theme = useTheme() as ThemeType
 
   const navigate = useNavigate()
 
@@ -116,14 +124,14 @@ export default function NavBar({ toggleTheme }: NavBarProps) {
                 <CaretDown
                   className="cursor-change"
                   size={24}
-                  color="#ffffff"
+                  color={`${theme.iconColor}`}
                   onClick={toggleSearch}
                 />
               ) : (
                 <MagnifyingGlass
                   className="cursor-change"
                   size={24}
-                  color="#ffffff"
+                  color={`${theme.iconColor}`}
                   onClick={toggleSearch}
                 />
               )}
@@ -131,13 +139,13 @@ export default function NavBar({ toggleTheme }: NavBarProps) {
                 <X
                   className="cursor-change"
                   size={24}
-                  color="#ffffff"
+                  color={`${theme.iconColor}`}
                   onClick={toggleMenu}
                 />
               ) : (
                 <List
                   size={24}
-                  color="#ffffff"
+                  color={`${theme.iconColor}`}
                   className="menu-icon cursor-change"
                   onClick={toggleMenu}
                 />
