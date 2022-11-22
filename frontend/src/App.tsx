@@ -4,6 +4,7 @@ import { Router } from './Router'
 import { ThemeProvider } from 'styled-components'
 import themes from './styles/themes'
 import { useMemo, useState } from 'react'
+import { GlobalStyle } from './styles/global'
 
 export function App() {
   // Color theme on the app
@@ -26,6 +27,7 @@ export function App() {
       <BrowserRouter>
         <ThemeProvider theme={currentTheme}>
           {/* Actually doing some prop drilling right here but im fixing it later hehe */}
+          <GlobalStyle />
           <Router toggleTheme={handleToggleTheme} />
         </ThemeProvider>
       </BrowserRouter>

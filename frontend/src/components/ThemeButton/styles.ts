@@ -25,6 +25,19 @@ export const Switch = styled.label`
     transition: 0.4s;
 
     border-radius: 15px;
+
+    display: flex;
+    align-items: center;
+  }
+
+  span #icons {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin: 0px 5px 0px 5px;
   }
 
   span:before {

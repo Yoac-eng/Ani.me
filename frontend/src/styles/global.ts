@@ -33,7 +33,7 @@ export const GlobalStyle = createGlobalStyle`
         font-size: 62.5%;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        background-color: var( --dark-color);
+        background-color: ${({ theme }) => theme.backgroundColor};
         color: var(--white);
     }
 
