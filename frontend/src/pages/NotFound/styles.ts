@@ -34,7 +34,7 @@ export const NotFoundWrapper = styled.main`
       font-family: 'Rubik', sans-serif;
       font-size: 1.4rem;
       line-height: 1.8rem;
-      color: var(--white);
+      color: ${({ theme }) => theme.secondaryTextColor};
 
       .page-link {
         color: var(--primary-color);
