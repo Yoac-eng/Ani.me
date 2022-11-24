@@ -41,7 +41,7 @@ export const EpisodeWrapper = styled.div<EpisodeWrapperProps>`
   }
 
   span {
-    color: var(--gray);
+    color: ${({ theme }) => theme.secondaryTextColor};
   }
 
   .container {
@@ -73,6 +73,8 @@ export const EpisodeWrapper = styled.div<EpisodeWrapperProps>`
     }
 
     #episode-name {
+      color: ${({ theme }) => theme.titleColor};
+
       overflow: hidden;
       text-overflow: ellipsis;
     }

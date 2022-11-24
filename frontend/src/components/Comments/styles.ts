@@ -12,7 +12,7 @@ export const CommentsWrapper = styled.section`
     font-family: 'Rubik', sans-serif;
     font-size: 1.6rem;
     line-height: 19px;
-    color: var(--white);
+    color: ${({ theme }) => theme.titleColor};
   }
 
   article {
@@ -36,6 +36,8 @@ export const CommentsWrapper = styled.section`
       gap: 0.9rem;
 
       p {
+        color: ${({ theme }) => theme.titleColor};
+
         font-family: 'Rubik', sans-serif;
         font-weight: 500;
         font-size: 1.2rem;
@@ -45,7 +47,7 @@ export const CommentsWrapper = styled.section`
         font-family: 'Inter', sans-serif;
         font-size: 1.2rem;
         line-height: 1.7rem;
-        color: var(--gray);
+        color: ${({ theme }) => theme.secondaryTextColor};
 
         word-break: break-all;
       }

@@ -1,11 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
 import '@vime/core/themes/default.css'
 
-interface ThemeType {
-  backgroundColor: string
-}
-
-export const GlobalStyle = createGlobalStyle<{ theme: ThemeType }>`
+export const GlobalStyle = createGlobalStyle`
     * {
         margin: 0;
         padding: 0;

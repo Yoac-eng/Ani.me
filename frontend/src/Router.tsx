@@ -1,4 +1,9 @@
-import { Route, Routes } from 'react-router-dom'
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from 'react-router-dom'
 import { DefaultLayout } from './layout/default'
 import Anime from './pages/Anime'
 import Home from './pages/home'
@@ -13,8 +18,8 @@ interface RouterProps {
 }
 
 export function Router({ toggleTheme }: RouterProps) {
-  return (
-    <Routes>
+  const router = createBrowserRouter(
+    createRoutesFromElements(
       <Route path="/" element={<DefaultLayout toggleTheme={toggleTheme} />}>
         <Route path="/" element={<Home />} />
         <Route
@@ -26,7 +31,8 @@ export function Router({ toggleTheme }: RouterProps) {
         <Route path="/anime/:animeId" element={<Anime />} />
         <Route path="/search" element={<SearchAnime />} />
         <Route path="*" element={<NotFound />} />
-      </Route>
-    </Routes>
+      </Route>,
+    ),
   )
+  return <RouterProvider router={router} />
 }

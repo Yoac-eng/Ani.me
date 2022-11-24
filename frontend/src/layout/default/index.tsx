@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet, ScrollRestoration } from 'react-router-dom'
 import NavBar from '../../components/NavBar'
 import Footer from '../../components/Footer'
 
@@ -12,6 +12,8 @@ export function DefaultLayout({ toggleTheme }: DefaultLayoutProps) {
       <NavBar toggleTheme={toggleTheme} />
       <Outlet />
       <Footer />
+      {/* Router functionality to reset scroll on top */}
+      <ScrollRestoration />
     </>
   )
 }

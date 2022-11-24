@@ -1,4 +1,3 @@
-import { BrowserRouter } from 'react-router-dom'
 import { Router } from './Router'
 
 import { ThemeProvider } from 'styled-components'
@@ -24,13 +23,11 @@ export function App() {
   }
   return (
     <div className="wrapper">
-      <BrowserRouter>
-        <ThemeProvider theme={currentTheme}>
-          {/* Actually doing some prop drilling right here but im fixing it later hehe */}
-          <GlobalStyle />
-          <Router toggleTheme={handleToggleTheme} />
-        </ThemeProvider>
-      </BrowserRouter>
+      <ThemeProvider theme={currentTheme}>
+        {/* Actually doing some prop drilling right here but im fixing it later hehe */}
+        <GlobalStyle />
+        <Router toggleTheme={handleToggleTheme} />
+      </ThemeProvider>
     </div>
   )
 }

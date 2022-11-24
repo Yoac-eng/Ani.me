@@ -84,5 +84,9 @@ export const AnimeInfoWrapper = styled.section`
       flex-direction: column;
       gap: 0.8rem;
     }
+
+    p .viewMore-link {
+      color: ${({ theme }) => theme.titleColor};
+    }
   }
 `
