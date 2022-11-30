@@ -90,7 +90,7 @@ export default function NavBar({ toggleTheme }: NavBarProps) {
   // Handle the user search action itself
   function handleSearch() {
     if (searchInput !== '') {
-      navigate(`/search?q=${searchInput}`)
+      navigate(`/search?q=${searchInput}&page=${1}`)
     }
   }
 

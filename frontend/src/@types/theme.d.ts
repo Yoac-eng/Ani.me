@@ -1,5 +1,5 @@
-import { LightType } from '../styles/themes/light'
+import { DefaultType } from '../styles/themes/light'
 
 declare module 'styled-components' {
-  export interface DefaultTheme extends LightType {}
+  export interface DefaultTheme extends DefaultType {}
 }

@@ -4,10 +4,13 @@ import { ThemeProvider } from 'styled-components'
 import themes from './styles/themes'
 import { useMemo, useState } from 'react'
 import { GlobalStyle } from './styles/global'
+import { DefaultType } from './styles/themes/light'
+
+type themeType = 'dark' | 'light'
 
 export function App() {
   // Color theme on the app
-  const [theme, setTheme] = useState('dark')
+  const [theme, setTheme] = useState<themeType>('dark')
 
   // Vamos ter aqui um useMemo pra guardar na memória qual o tema está nosso site
   // e esse valor só irá ser alterado quando o valor do nosso estado for alterado
@@ -23,7 +26,7 @@ export function App() {
   }
   return (
     <div className="wrapper">
-      <ThemeProvider theme={currentTheme}>
+      <ThemeProvider theme={currentTheme as DefaultType}>
         {/* Actually doing some prop drilling right here but im fixing it later hehe */}
         <GlobalStyle />
         <Router toggleTheme={handleToggleTheme} />

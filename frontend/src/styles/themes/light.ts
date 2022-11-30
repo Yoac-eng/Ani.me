@@ -10,4 +10,4 @@ export const light = {
   iconColor: '#000000',
 } as const
 
-export type LightType = typeof light
+export type DefaultType = typeof light
