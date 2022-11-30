@@ -182,10 +182,7 @@ export default function NavBar({ toggleTheme }: NavBarProps) {
         <Link onClick={toggleMenu} to="/register">
           Criar conta
         </Link>
-        <Link
-          onClick={toggleMenu}
-          to={`/anime/${Math.floor(Math.random() * 10000)}`}
-        >
+        <Link onClick={toggleMenu} to={`/anime/random`}>
           Anime aleatório
         </Link>
       </menu>
