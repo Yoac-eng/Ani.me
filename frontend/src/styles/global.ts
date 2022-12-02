@@ -17,7 +17,11 @@ export const GlobalStyle = createGlobalStyle`
         --dark-color: #06090F;
         
         --gray: #BFBFBF;
+        --medium-gray: #525252;
+        --lighter-gray: #CACACA;
+        
         --white: #FFFFFF;
+        --lighter-white: #f5f5f5;
 
         --navbar-height: 3.2rem;
         
@@ -29,7 +33,7 @@ export const GlobalStyle = createGlobalStyle`
         font-size: 62.5%;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        background-color: var( --dark-color);
+        background-color: ${({ theme }) => theme.backgroundColor};
         color: var(--white);
     }
 

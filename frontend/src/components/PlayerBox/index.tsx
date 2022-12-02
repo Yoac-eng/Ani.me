@@ -22,10 +22,6 @@ interface PlayerProps {
 }
 
 export function PlayerBox({ anime }: PlayerProps) {
-  // useEffect(() => {
-  // get the episode data per slug param
-  // }, [anime]);
-
   const [receivedTrailerId, setReceivedTrailerId] = useState(false)
   const [handleViewMore, setHandleViewMore] = useState(false)
 

@@ -2,13 +2,26 @@ import * as S from './styles'
 import React, { useState, useEffect } from 'react'
 import { CaretDown, List, MagnifyingGlass, X } from 'phosphor-react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { ThemeButton } from '../ThemeButton'
+import { useTheme } from 'styled-components'
 
-export default function NavBar() {
+interface NavBarProps {
+  toggleTheme(): void
+}
+
+interface ThemeType {
+  iconColor: string
+}
+
+export default function NavBar({ toggleTheme }: NavBarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [isScrollingUp, setIsScrollingUp] = useState(false)
   const [navIconsDisplay, setNavIconsDisplay] = useState(true)
   const [searchInput, setSearchInput] = useState('')
+
+  // Get theme from theme provider
+  const theme = useTheme() as ThemeType
 
   const navigate = useNavigate()
 
@@ -77,7 +90,7 @@ export default function NavBar() {
   // Handle the user search action itself
   function handleSearch() {
     if (searchInput !== '') {
-      navigate(`/search?q=${searchInput}`)
+      navigate(`/search?q=${searchInput}&page=${1}`)
     }
   }
 
@@ -106,18 +119,19 @@ export default function NavBar() {
           // Check if the icons should be displayed or not depending on which page is beeing rendered
           navIconsDisplay ? (
             <div className="icons">
+              <ThemeButton toggleTheme={toggleTheme}></ThemeButton>
               {isSearchOpen ? (
                 <CaretDown
                   className="cursor-change"
                   size={24}
-                  color="#ffffff"
+                  color={`${theme.iconColor}`}
                   onClick={toggleSearch}
                 />
               ) : (
                 <MagnifyingGlass
                   className="cursor-change"
                   size={24}
-                  color="#ffffff"
+                  color={`${theme.iconColor}`}
                   onClick={toggleSearch}
                 />
               )}
@@ -125,13 +139,13 @@ export default function NavBar() {
                 <X
                   className="cursor-change"
                   size={24}
-                  color="#ffffff"
+                  color={`${theme.iconColor}`}
                   onClick={toggleMenu}
                 />
               ) : (
                 <List
                   size={24}
-                  color="#ffffff"
+                  color={`${theme.iconColor}`}
                   className="menu-icon cursor-change"
                   onClick={toggleMenu}
                 />
@@ -168,10 +182,7 @@ export default function NavBar() {
         <Link onClick={toggleMenu} to="/register">
           Criar conta
         </Link>
-        <Link
-          onClick={toggleMenu}
-          to={`/anime/${Math.floor(Math.random() * 10000)}`}
-        >
+        <Link onClick={toggleMenu} to={`/anime/random`}>
           Anime aleatório
         </Link>
       </menu>

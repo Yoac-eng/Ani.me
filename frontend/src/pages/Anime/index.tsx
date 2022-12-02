@@ -7,7 +7,6 @@ import { useQuery } from 'react-query'
 import api from '../../services/Api'
 import { useState } from 'react'
 import SeeMoreButton from '../../components/SeeMoreButton'
-import useScrollReset from '../../Hooks/useScrollReset'
 import { Loading } from '../../components/Loading'
 
 type AnimeData = {
@@ -46,9 +45,6 @@ type EpisodeListData = {
 }
 
 export default function Anime() {
-  // Reset window scroll when page is rendered
-  useScrollReset()
-
   const { animeId } = useParams()
 
   const [smallerSlice, setSmallerSlice] = useState(true)
@@ -63,9 +59,16 @@ export default function Anime() {
   const { data: anime, isLoading: animeDataIsLoading } = useQuery<AnimeData>(
     ['animeData', animeId],
     async () => {
-      const response = await api.get(`anime/${animeId}`)
-
-      return response.data
+      if (animeId === 'random') {
+        const response = await api.get(`random/anime`)
+        return response.data
+      } else {
+        const response = await api.get(`anime/${animeId}`)
+        return response.data
+      }
+    },
+    {
+      refetchOnWindowFocus: false,
     },
   )
   const animeData = anime?.data
@@ -74,9 +77,11 @@ export default function Anime() {
   const { data: episodes } = useQuery<EpisodeListData>(
     ['episodesList', animeId],
     async () => {
-      const response = await api.get(`anime/${animeId}/episodes`)
+      if (animeId !== 'random') {
+        const response = await api.get(`anime/${animeId}/episodes`)
 
-      return response.data
+        return response.data
+      }
     },
   )
   const episodesList = episodes?.data

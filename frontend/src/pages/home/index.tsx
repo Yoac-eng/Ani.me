@@ -6,7 +6,6 @@ import * as S from './styles'
 import api from '../../services/Api'
 import SeeMoreButton from '../../components/SeeMoreButton'
 import { useState } from 'react'
-import useScrollReset from '../../Hooks/useScrollReset'
 import { Loading } from '../../components/Loading'
 
 type NewSeasonsData = {
@@ -58,9 +57,6 @@ type PopularAnimeData = {
 }
 
 export default function HomePage() {
-  // Reset window scroll when page is rendered
-  useScrollReset()
-
   // States and functions to deal with the See more button
   const [smallerSlice, setSmallerSlice] = useState(true)
   const [seeMoreButtonStatus, setSeeMoreButtonStatus] = useState(false)
@@ -144,7 +140,7 @@ export default function HomePage() {
           seeMoreButtonStatus={seeMoreButtonStatus}
         />
       </S.LastUpdates>
-      <S.Recent>
+      <S.MostPopular>
         <strong className="title">Animes mais populares</strong>
         {popularAnimesIsLoading ? (
           <Loading />
@@ -160,7 +156,7 @@ export default function HomePage() {
             ))}
           </div>
         )}
-      </S.Recent>
+      </S.MostPopular>
     </S.HomeWrapper>
   )
 }

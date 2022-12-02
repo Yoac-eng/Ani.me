@@ -16,7 +16,7 @@ export const Form = styled.form`
     font-size: 2.5rem;
     font-weight: 500;
     line-height: 3rem;
-    color: var(--white);
+    color: ${({ theme }) => theme.titleColor};
 
     margin-bottom: 3rem;
   }
@@ -32,7 +32,7 @@ export const Form = styled.form`
       padding: 1rem 0.5rem 1.5rem 0.5rem;
 
       letter-spacing: 0.07rem;
-      color: var(--white);
+      color: ${({ theme }) => theme.titleColor};
       font-weight: 500;
       font-size: 1.4rem;
       font-family: 'Inter', sans-serif;
@@ -41,7 +41,7 @@ export const Form = styled.form`
       border: none;
       border-bottom: 1px solid var(--gray);
 
-      background-color: var(--dark-color);
+      background-color: ${({ theme }) => theme.backgroundColor};
     }
   }
 
@@ -81,7 +81,7 @@ export const AccountInfo = styled.div`
 
   .forgot-password {
     a {
-      color: var(--gray);
+      color: ${({ theme }) => theme.secondaryTextColor};
     }
     a:hover {
       color: var(--primary-color);
@@ -89,7 +89,7 @@ export const AccountInfo = styled.div`
   }
 
   .create-account {
-    color: var(--white);
+    color: ${({ theme }) => theme.titleColor};
 
     a {
       color: var(--primary-color);

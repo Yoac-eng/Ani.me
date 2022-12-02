@@ -26,7 +26,7 @@ export const NavBarWrapper = styled.nav<NavBarProps>`
   padding-bottom: 1rem;
 
   z-index: 90;
-  background-color: var(--dark-color);
+  background-color: ${({ theme }) => theme.backgroundColor};
 
   ${({ isScrollingUp }) =>
     isScrollingUp &&
@@ -34,7 +34,6 @@ export const NavBarWrapper = styled.nav<NavBarProps>`
       position: fixed;
       animation: fade-in 500ms forwards;
     `}
-
   header {
     display: flex;
     align-items: center;
@@ -81,14 +80,14 @@ export const NavBarWrapper = styled.nav<NavBarProps>`
         flex-direction: column;
         padding: 0.5rem;
 
-        background-color: var(--dark-color);
+        background-color: ${({ theme }) => theme.backgroundColor};
       }
 
       menu a {
         font-family: 'Rubik', sans-serif;
         font-size: 1.4rem;
         line-height: 3rem;
-        color: var(--white);
+        color: ${({ theme }) => theme.titleColor};
       }
 
       menu a:hover {
@@ -123,15 +122,15 @@ export const NavBarWrapper = styled.nav<NavBarProps>`
         padding-left: 1.5rem;
 
         letter-spacing: 0.07rem;
-        color: var(--white);
+        color: ${({ theme }) => theme.titleColor};
         font-weight: 500;
         font-size: 1.4rem;
         font-family: 'Inter', sans-serif;
 
-        border: 1px solid var(--secondary-color);
+        border: 1px solid ${({ theme }) => theme.MenuBackgroundColor};
         border-radius: 3.7rem 0 0 3.7rem;
 
-        background-color: var(--secondary-color);
+        background-color: ${({ theme }) => theme.MenuBackgroundColor};
 
         outline: none;
       }

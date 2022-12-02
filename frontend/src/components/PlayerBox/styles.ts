@@ -10,7 +10,7 @@ export const PlayerBoxWrapper = styled.section`
     font-weight: 500;
     font-size: 1.6rem;
     line-height: 19px;
-    color: #ffffff;
+    color: ${({ theme }) => theme.titleColor};
   }
 
   .player-container {
@@ -22,7 +22,7 @@ export const PlayerBoxWrapper = styled.section`
       font-family: 'Inter', sans-serif;
       font-size: 1.2rem;
       line-height: 15px;
-      color: #bfbfbf;
+      color: ${({ theme }) => theme.secondaryTextColor};
 
       display: flex;
       flex-direction: column;
@@ -33,7 +33,7 @@ export const PlayerBoxWrapper = styled.section`
         font-weight: 500;
         font-size: 1.4rem;
         line-height: 17px;
-        color: #ffffff;
+        color: ${({ theme }) => theme.titleColor};
       }
 
       ul {
@@ -55,6 +55,10 @@ export const PlayerBoxWrapper = styled.section`
         display: flex;
         flex-direction: column;
         gap: 0.8rem;
+      }
+
+      p .viewMore-link {
+        color: ${({ theme }) => theme.titleColor};
       }
     }
   }

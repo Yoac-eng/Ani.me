@@ -7,6 +7,8 @@ interface AnimeCardProps {
 export const AnimeCardWrapper = styled.div<AnimeCardProps>`
   width: 14.4rem;
 
+  color: ${({ theme }) => theme.titleColor};
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -59,7 +61,7 @@ export const AnimeCardWrapper = styled.div<AnimeCardProps>`
 
     border-radius: 11px;
 
-    background: linear-gradient(180deg, rgba(6, 9, 15, 0) 0%, #06090f 100%);
+    background: ${({ theme }) => theme.cardGradient};
   }
 
   strong {

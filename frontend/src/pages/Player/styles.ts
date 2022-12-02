@@ -11,7 +11,7 @@ export const Related = styled.section`
     font-family: 'Rubik', sans-serif;
     font-size: 1.6rem;
     line-height: 19px;
-    color: var(--white);
+    color: ${({ theme }) => theme.titleColor};
   }
 
   .grid {
