@@ -53,4 +53,10 @@ export const GlobalStyle = createGlobalStyle`
         margin-inline: auto;
         padding: var(--wrapper-padding);
     }
+
+    @media(min-width: 980px){
+      .wrapper{
+        width: 66.6%;
+      }
+    }
 `

@@ -62,4 +62,30 @@ export const ScrollMenu = styled.menu`
 
     background-color: ${({ theme }) => theme.MenuBackgroundColor};
   }
+
+  @media (min-width: 980px) {
+    gap: 2rem;
+
+    .scroll-element {
+      height: 2.8rem;
+      width: 6.5rem;
+
+      font-size: 1.4rem;
+    }
+
+    .showall-element {
+      width: 8rem;
+    }
+  }
+
+  @media (min-width: 1920px) {
+    gap: 3rem;
+
+    .scroll-element {
+      height: 4rem;
+      width: 10.8rem;
+
+      font-size: 1.8rem;
+    }
+  }
 `

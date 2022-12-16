@@ -69,4 +69,20 @@ export const AnimeCardWrapper = styled.div<AnimeCardProps>`
     font-family: 'Rubik', sans-serif;
     line-height: 17px;
   }
+
+  @media (min-width: 980px) {
+  }
+  @media (min-width: 1920px) {
+    width: 18rem;
+
+    gap: 1.6rem;
+
+    a {
+      height: 25.4rem;
+
+      p {
+        font-size: 1.8rem;
+      }
+    }
+  }
 `

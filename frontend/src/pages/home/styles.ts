@@ -36,7 +36,7 @@ export const HomeMain = styled.main<HomeMainProps>`
     }
   }
 
-  a {
+  #main-pannel {
     position: relative;
 
     display: flex;
@@ -58,8 +58,7 @@ export const HomeMain = styled.main<HomeMainProps>`
     background-repeat: no-repeat;
 
     div {
-      margin-left: 1.792rem;
-      margin-bottom: 1.684rem;
+      margin: auto 1.792rem 1.684rem 1.792rem;
 
       display: flex;
       align-items: flex-start;
@@ -103,6 +102,72 @@ export const HomeMain = styled.main<HomeMainProps>`
       rgba(6, 9, 15, 0.8) 99.5%
     );
   }
+
+  @media (min-width: 980px) {
+    header {
+      .title {
+        font-size: 2.4rem;
+        line-height: 2.4rem;
+      }
+      p {
+        font-size: 1.8rem;
+        line-height: 2.9rem;
+      }
+    }
+
+    #main-pannel {
+      height: 30rem;
+
+      div {
+        margin-bottom: 3rem;
+
+        strong {
+          font-size: 2.2rem;
+          line-height: 3.5rem;
+        }
+        p {
+          max-width: 57rem;
+
+          font-size: 1.5rem;
+          line-height: 2.88rem;
+
+          max-height: 20rem;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 1920px) {
+    gap: 4rem;
+
+    header {
+      .title {
+        font-size: 3.2rem;
+        line-height: 3.8rem;
+      }
+      p {
+        font-size: 2.4rem;
+        line-height: 2.9rem;
+      }
+    }
+
+    #main-pannel {
+      height: 40rem;
+
+      div {
+        margin-bottom: 4rem;
+
+        strong {
+          font-size: 3rem;
+          line-height: 6.4rem;
+        }
+        p {
+          font-size: 1.8rem;
+        }
+      }
+    }
+  }
 `
 
 export const LastUpdates = styled.section`
@@ -121,6 +186,32 @@ export const LastUpdates = styled.section`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2.755rem 2.4rem;
+  }
+
+  @media (min-width: 980px) {
+    .title {
+      font-size: 2.4rem;
+      line-height: 2.4rem;
+    }
+
+    .grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (min-width: 1920px) {
+    margin-top: 4rem;
+
+    .title {
+      font-size: 3.2rem;
+      line-height: 3.782rem;
+    }
+
+    .grid {
+      margin-top: 4rem;
+
+      grid-template-columns: repeat(6, 1fr);
+    }
   }
 `
 

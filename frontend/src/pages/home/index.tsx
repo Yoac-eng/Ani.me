@@ -110,10 +110,10 @@ export default function HomePage() {
         {animeNewSeasonIsLoading ? (
           <Loading />
         ) : (
-          <Link to={`/anime/${animeNewSeason?.mal_id}`}>
+          <Link id="main-pannel" to={`/anime/${animeNewSeason?.mal_id}`}>
             <div>
               <strong>{animeNewSeason?.title} TERÁ NOVA TEMPORADA</strong>
-              <p>{animeNewSeason?.synopsis.substring(0, 250)}[...]</p>
+              <p>{animeNewSeason?.synopsis}</p>
             </div>
           </Link>
         )}
