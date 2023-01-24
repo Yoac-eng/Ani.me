@@ -185,6 +185,7 @@ export const LastUpdates = styled.section`
 
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
     gap: 2.755rem 2.4rem;
   }
 
@@ -195,7 +196,7 @@ export const LastUpdates = styled.section`
     }
 
     .grid {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto-fill, minmax(14.4rem, 1fr));
     }
   }
 
@@ -210,7 +211,7 @@ export const LastUpdates = styled.section`
     .grid {
       margin-top: 4rem;
 
-      grid-template-columns: repeat(6, 1fr);
+      grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
     }
   }
 `
@@ -230,6 +231,33 @@ export const MostPopular = styled.section`
 
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
     gap: 2.755rem 2.4rem;
+  }
+
+  @media (min-width: 980px) {
+    .title {
+      font-size: 2.4rem;
+      line-height: 2.4rem;
+    }
+
+    .grid {
+      grid-template-columns: repeat(auto-fill, minmax(14.4rem, 1fr));
+    }
+  }
+
+  @media (min-width: 1920px) {
+    margin-top: 4rem;
+
+    .title {
+      font-size: 3.2rem;
+      line-height: 3.782rem;
+    }
+
+    .grid {
+      margin-top: 4rem;
+
+      grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+    }
   }
 `

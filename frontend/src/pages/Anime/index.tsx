@@ -117,21 +117,23 @@ export default function Anime() {
           />
         </>
       )}
-      {episodesList?.slice(0, smallerSlice ? 6 : 9).map((item) => (
-        <Episode
-          key={item.mal_id}
-          episodeInfo={{
-            animeId: animeData?.mal_id,
-            animeName: animeData?.title,
-            episodeName: item.title,
-            episodeNumber: item.mal_id,
-            episodeImageUrl: animeData?.trailer.images.medium_image_url,
-            duration: 23,
-            type: animeData?.type,
-            commentaries: 6,
-          }}
-        />
-      ))}
+      <S.EpisodesWrapper>
+        {episodesList?.slice(0, smallerSlice ? 8 : 12).map((item) => (
+          <Episode
+            key={item.mal_id}
+            episodeInfo={{
+              animeId: animeData?.mal_id,
+              animeName: animeData?.title,
+              episodeName: item.title,
+              episodeNumber: item.mal_id,
+              episodeImageUrl: animeData?.trailer.images.medium_image_url,
+              duration: 23,
+              type: animeData?.type,
+              commentaries: 6,
+            }}
+          />
+        ))}
+      </S.EpisodesWrapper>
       {episodesList?.length! >= 6 && (
         <SeeMoreButton
           onClick={toggleSliceSize}

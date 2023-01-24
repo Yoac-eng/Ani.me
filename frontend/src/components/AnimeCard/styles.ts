@@ -70,8 +70,6 @@ export const AnimeCardWrapper = styled.div<AnimeCardProps>`
     line-height: 17px;
   }
 
-  @media (min-width: 980px) {
-  }
   @media (min-width: 1920px) {
     width: 18rem;
 

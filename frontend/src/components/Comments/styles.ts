@@ -58,4 +58,51 @@ export const CommentsWrapper = styled.section`
   article + article {
     border-top: 2px solid var(--secondary-color);
   }
+
+  @media (min-width: 980px) {
+    strong {
+      font-size: 2.4rem;
+      line-height: 2.4rem;
+    }
+
+    article {
+      gap: 2rem;
+
+      img {
+        width: 6.2rem;
+        height: 6.2rem;
+      }
+
+      #commentary {
+        p {
+          font-size: 1.75rem;
+          line-height: 2.4rem;
+        }
+        span {
+          font-size: 1.6rem;
+          line-height: 2.2rem;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 1920px) {
+    strong {
+      font-size: 3.2rem;
+      line-height: 3.2rem;
+    }
+
+    article {
+      #commentary {
+        p {
+          font-size: 2rem;
+          line-height: 3.2rem;
+        }
+        span {
+          font-size: 1.8rem;
+          line-height: 2.8rem;
+        }
+      }
+    }
+  }
 `

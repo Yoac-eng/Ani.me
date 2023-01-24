@@ -42,44 +42,51 @@ export default function AnimeInfo({ anime }: AnimeInfoProps) {
       <span>
         {anime.videos} Vídeos ◽ {anime.type}
       </span>
-      <div className="desc">
-        <ul>
-          {studios?.length! > 0 && (
-            <li>
-              <span className="desc-item">{'Estúdio(s):'}</span>{' '}
-              {studios?.join(',')}
-            </li>
-          )}
-          {genres?.length! > 0 && (
-            <li>
-              <span className="desc-item">Gênero:</span> {genres?.join(', ')}
-            </li>
-          )}
-        </ul>
-        <Link to={anime.firstEpisodeLink!} className="button">
-          <Play size={20} color="#ffffff" /> COMEÇAR A ASSISTIR S1 E1
-        </Link>
-        <p>
-          {handleViewMore ? (
-            <>
-              {anime.synopsis}
-              <Link className="viewMore-link" to="#" onClick={toggleViewMore}>
-                {' '}
-                View less
-              </Link>
-            </>
-          ) : anime?.synopsis?.length! > 350 ? (
-            <>
-              {anime?.synopsis?.substring(0, 350) + ' [...]'}
-              <Link className="viewMore-link" to="#" onClick={toggleViewMore}>
-                {' '}
-                View more
-              </Link>
-            </>
-          ) : (
-            <>{anime.synopsis}</>
-          )}
-        </p>
+      <div className="desc-wrapper">
+        <div className="desc">
+          <ul>
+            {studios?.length! > 0 && (
+              <li>
+                <span className="desc-item">{'Estúdio(s):'}</span>{' '}
+                {studios?.join(',')}
+              </li>
+            )}
+            {genres?.length! > 0 && (
+              <li>
+                <span className="desc-item">Gênero:</span> {genres?.join(', ')}
+              </li>
+            )}
+          </ul>
+          <Link to={anime.firstEpisodeLink!} className="button">
+            <Play size={20} color="#ffffff" /> COMEÇAR A ASSISTIR S1 E1
+          </Link>
+          <p>
+            {handleViewMore ? (
+              <>
+                {anime.synopsis}
+                <Link className="viewMore-link" to="#" onClick={toggleViewMore}>
+                  {' '}
+                  View less
+                </Link>
+              </>
+            ) : anime?.synopsis?.length! > 350 ? (
+              <>
+                {anime?.synopsis?.substring(0, 350) + ' [...]'}
+                <Link className="viewMore-link" to="#" onClick={toggleViewMore}>
+                  {' '}
+                  View more
+                </Link>
+              </>
+            ) : (
+              <>{anime.synopsis}</>
+            )}
+          </p>
+        </div>
+        <div className="desc-firstEpisode">
+          <Link to={anime.firstEpisodeLink!} className="button">
+            <Play size={20} color="#ffffff" /> COMEÇAR A ASSISTIR S1 E1
+          </Link>
+        </div>
       </div>
     </S.AnimeInfoWrapper>
   )
