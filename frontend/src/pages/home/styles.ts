@@ -190,6 +190,11 @@ export const LastUpdates = styled.section`
   }
 
   @media (min-width: 980px) {
+    strong {
+      font-size: 1.6rem;
+      line-height: 19.3px;
+    }
+
     .title {
       font-size: 2.4rem;
       line-height: 2.4rem;
@@ -202,6 +207,11 @@ export const LastUpdates = styled.section`
 
   @media (min-width: 1920px) {
     margin-top: 4rem;
+
+    strong {
+      font-size: 1.8rem;
+      line-height: 21.3px;
+    }
 
     .title {
       font-size: 3.2rem;
@@ -236,6 +246,11 @@ export const MostPopular = styled.section`
   }
 
   @media (min-width: 980px) {
+    strong {
+      font-size: 1.6rem;
+      line-height: 19.3px;
+    }
+
     .title {
       font-size: 2.4rem;
       line-height: 2.4rem;
@@ -248,6 +263,11 @@ export const MostPopular = styled.section`
 
   @media (min-width: 1920px) {
     margin-top: 4rem;
+
+    strong {
+      font-size: 1.8rem;
+      line-height: 21.3px;
+    }
 
     .title {
       font-size: 3.2rem;

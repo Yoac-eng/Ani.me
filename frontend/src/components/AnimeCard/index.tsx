@@ -5,9 +5,6 @@ interface AnimeCardProps {
   name: string
   lastEpisode?: string
   image?: string
-  // pathname: string
-  // animeId?: number
-  // episodeId?: number
   hrefString?: string
 }
 

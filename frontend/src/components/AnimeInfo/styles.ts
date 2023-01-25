@@ -63,13 +63,13 @@ export const AnimeInfoWrapper = styled.section`
         flex-direction: column;
         gap: 0.8rem;
 
-        a {
+        span {
           margin-inline: auto;
-        }
-      }
 
-      p .viewMore-link {
-        color: ${({ theme }) => theme.titleColor};
+          color: ${({ theme }) => theme.titleColor};
+
+          cursor: pointer;
+        }
       }
     }
 

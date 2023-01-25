@@ -64,18 +64,12 @@ export default function AnimeInfo({ anime }: AnimeInfoProps) {
             {handleViewMore ? (
               <>
                 {anime.synopsis}
-                <Link className="viewMore-link" to="#" onClick={toggleViewMore}>
-                  {' '}
-                  View less
-                </Link>
+                <span onClick={toggleViewMore}> View less</span>
               </>
             ) : anime?.synopsis?.length! > 350 ? (
               <>
                 {anime?.synopsis?.substring(0, 350) + ' [...]'}
-                <Link className="viewMore-link" to="#" onClick={toggleViewMore}>
-                  {' '}
-                  View more
-                </Link>
+                <span onClick={toggleViewMore}> View more</span>
               </>
             ) : (
               <>{anime.synopsis}</>
