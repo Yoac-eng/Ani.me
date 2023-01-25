@@ -5,7 +5,7 @@ interface AnimeCardProps {
 }
 
 export const AnimeCardWrapper = styled.div<AnimeCardProps>`
-  width: 14.4rem;
+  width: 11rem;
 
   color: ${({ theme }) => theme.titleColor};
 
@@ -68,6 +68,10 @@ export const AnimeCardWrapper = styled.div<AnimeCardProps>`
     font-size: 1.4rem;
     font-family: 'Rubik', sans-serif;
     line-height: 17px;
+  }
+
+  @media (min-width: 450px) {
+    width: 14.4rem;
   }
 
   @media (min-width: 1920px) {
