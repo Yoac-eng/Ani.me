@@ -57,6 +57,10 @@ export const ScrollMenu = styled.menu`
     border-radius: 3.7rem;
   }
 
+  .highlighted {
+    background-color: ${({ theme }) => theme.secondaryTextColor};
+  }
+
   .showall-element {
     width: 6.6rem;
 
