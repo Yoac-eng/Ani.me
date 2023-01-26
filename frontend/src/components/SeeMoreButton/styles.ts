@@ -20,4 +20,10 @@ export const SeeMoreButtonWrapper = styled.button`
   font-family: 'Inter', sans-serif;
 
   text-align: center;
+
+  @media (min-width: 980px) {
+    max-width: 18rem;
+
+    margin-inline: auto;
+  }
 `

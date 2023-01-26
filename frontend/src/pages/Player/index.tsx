@@ -6,10 +6,15 @@ import { useParams } from 'react-router-dom'
 import { useQuery } from 'react-query'
 import api from '../../services/Api'
 import { useEffect, useState } from 'react'
+import { Loading } from '../../components/Loading'
 
 type AnimeData = {
   data: {
-    // mal_id:number;
+    images: {
+      jpg: {
+        large_image_url: string
+      }
+    }
     trailer: {
       youtube_id: string
       images: {
@@ -54,11 +59,14 @@ export default function PlayerPage() {
   const [relatedAnimes, setRelatedAnimes] = useState<AnimeByGenresData>()
 
   // Anime request
-  const { data: anime } = useQuery<AnimeData>('animeData', async () => {
-    const response = await api.get(`anime/${animeId}`)
+  const { data: anime, isLoading: animeDataIsLoading } = useQuery<AnimeData>(
+    'animeData',
+    async () => {
+      const response = await api.get(`anime/${animeId}`)
 
-    return response.data
-  })
+      return response.data
+    },
+  )
   const animeData = anime?.data
 
   // Episode by id request
@@ -104,26 +112,31 @@ export default function PlayerPage() {
           episodeTitle: episodeData?.title,
           episodeDuration,
           episodeTrailerYTid: animeData?.trailer.youtube_id,
+          animeImage: animeData?.images.jpg.large_image_url,
         }}
       />
       <Comments />
-      <S.Related>
-        {relatedAnimeData?.length! > 0 && (
-          <>
-            <strong>Relacionados</strong>
-            <div className="grid">
-              {relatedAnimeData?.slice(0, 6).map((item) => (
-                <AnimeCard
-                  key={item.mal_id}
-                  name={item.title}
-                  image={item.images.jpg.large_image_url}
-                  hrefString={`/anime/${item.mal_id}`}
-                />
-              ))}
-            </div>
-          </>
-        )}
-      </S.Related>
+      {animeDataIsLoading ? (
+        <Loading />
+      ) : (
+        <S.Related>
+          {relatedAnimeData?.length! > 0 && (
+            <>
+              <strong className="title">Relacionados</strong>
+              <div className="grid">
+                {relatedAnimeData?.slice(0, 6).map((item) => (
+                  <AnimeCard
+                    key={item.mal_id}
+                    name={item.title}
+                    image={item.images.jpg.large_image_url}
+                    hrefString={`/anime/${item.mal_id}`}
+                  />
+                ))}
+              </div>
+            </>
+          )}
+        </S.Related>
+      )}
     </S.PlayerWrapper>
   )
 }

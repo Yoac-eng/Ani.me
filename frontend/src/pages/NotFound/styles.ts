@@ -12,7 +12,7 @@ export const NotFoundWrapper = styled.main`
   gap: 3rem;
 
   img {
-    max-width: 100%;
+    width: min(36rem, 80%);
     height: auto;
   }
 
@@ -42,6 +42,20 @@ export const NotFoundWrapper = styled.main`
 
       .page-link:hover {
         border-bottom: 1px solid var(--primary-color);
+      }
+    }
+  }
+
+  @media (min-width: 1920px) {
+    #notfound-label {
+      h1 {
+        font-size: 3.2rem;
+        line-height: 3.782rem;
+      }
+
+      p {
+        font-size: 1.6rem;
+        line-height: 1.963rem;
       }
     }
   }

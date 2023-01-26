@@ -2,10 +2,15 @@ import styled from 'styled-components'
 
 export const RegisterWrapper = styled.div`
   padding-top: 8rem;
+
+  display: flex;
+  justify-content: center;
 `
 
 export const Form = styled.form`
   padding: 1.5rem 0;
+  width: 100%;
+  max-width: 40rem;
 
   display: flex;
   flex-direction: column;
@@ -63,6 +68,12 @@ export const Form = styled.form`
     text-align: center;
 
     cursor: pointer;
+  }
+
+  @media (min-width: 540px) {
+    button {
+      max-width: 12rem;
+    }
   }
 `
 

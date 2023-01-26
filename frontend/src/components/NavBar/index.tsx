@@ -115,11 +115,11 @@ export default function NavBar({ toggleTheme }: NavBarProps) {
         <Link id="logo" to="/">
           Ani.me
         </Link>
+        <ThemeButton toggleTheme={toggleTheme} />
         {
           // Check if the icons should be displayed or not depending on which page is beeing rendered
-          navIconsDisplay ? (
+          navIconsDisplay && (
             <div className="icons">
-              <ThemeButton toggleTheme={toggleTheme}></ThemeButton>
               {isSearchOpen ? (
                 <CaretDown
                   className="cursor-change"
@@ -151,12 +151,11 @@ export default function NavBar({ toggleTheme }: NavBarProps) {
                 />
               )}
             </div>
-          ) : (
-            ''
           )
         }
       </header>
-      <form id="search-bar" onSubmit={handleSubmit}>
+      {/* search input and menu mobile version */}
+      <form id="mobile-search-bar" onSubmit={handleSubmit}>
         <input
           type="text"
           value={searchInput}
@@ -172,9 +171,12 @@ export default function NavBar({ toggleTheme }: NavBarProps) {
           />
         </button>
       </form>
-      <menu>
+      <menu id="mobile-menu">
         <Link onClick={toggleMenu} to="/">
           Início
+        </Link>
+        <Link onClick={toggleMenu} to={`/anime/random`}>
+          Anime aleatório
         </Link>
         <Link onClick={toggleMenu} to="/login">
           Login
@@ -182,9 +184,22 @@ export default function NavBar({ toggleTheme }: NavBarProps) {
         <Link onClick={toggleMenu} to="/register">
           Criar conta
         </Link>
-        <Link onClick={toggleMenu} to={`/anime/random`}>
-          Anime aleatório
-        </Link>
+      </menu>
+      {/* desktop menu and input search */}
+      <menu id="desktop-menu">
+        <Link to="/">Início</Link>
+        <Link to="/login">Login</Link>
+        <Link to="/register">Criar conta</Link>
+        <Link to={`/anime/random`}>Anime aleatório</Link>
+        <form id="search-bar" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            value={searchInput}
+            placeholder="Buscar animes"
+            onChange={handleChange}
+            onKeyDown={handleEnterKeyPress}
+          />
+        </form>
       </menu>
     </S.NavBarWrapper>
   )

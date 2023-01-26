@@ -10,6 +10,7 @@ export const PaginationWrapper = styled.ul`
   gap: 1.5rem;
 
   font-size: 1.4rem;
+  font-family: 'Rubik', sans-serif;
 
   color: ${({ theme }) => theme.titleColor};
 

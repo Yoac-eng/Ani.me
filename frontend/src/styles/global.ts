@@ -48,9 +48,21 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     .wrapper {
-        width: min(36rem, 100%);
+        width: min(36rem, 80%);
 
         margin-inline: auto;
         padding: var(--wrapper-padding);
+    }
+
+    @media(min-width: 980px){
+      .wrapper{
+        width: 50%;
+      }
+    }
+
+    @media(min-width: 1920px){
+      .wrapper{
+        width: 70%;
+      }
     }
 `

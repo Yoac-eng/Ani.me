@@ -24,4 +24,29 @@ export const AnimeBanner = styled.figure`
     position: absolute;
     z-index: 1;
   }
+
+  @media (min-width: 980px) {
+    #bg-image {
+      width: 50%;
+    }
+  }
+
+  @media (min-width: 1920px) {
+    #bg-image {
+      height: 50rem;
+    }
+  }
+`
+
+export const EpisodesWrapper = styled.section`
+  @media (min-width: 1450px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    gap: 2.755rem 2.4rem;
+  }
+
+  @media (min-width: 1920px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 `

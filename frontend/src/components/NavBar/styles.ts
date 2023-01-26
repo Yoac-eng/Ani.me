@@ -37,6 +37,8 @@ export const NavBarWrapper = styled.nav<NavBarProps>`
   header {
     display: flex;
     align-items: center;
+
+    gap: 3.2rem;
   }
 
   #logo {
@@ -59,13 +61,25 @@ export const NavBarWrapper = styled.nav<NavBarProps>`
 
   menu {
     display: none;
+
+    a {
+      font-family: 'Rubik', sans-serif;
+      font-size: 1.4rem;
+      line-height: 3rem;
+      color: ${({ theme }) => theme.titleColor};
+    }
+    a:hover {
+      transition: 0.3s;
+
+      color: var(--primary-color);
+    }
   }
 
   //Check the menu state for mobile menu toggle
   ${({ isMenuOpen }) =>
     isMenuOpen &&
     css`
-      menu {
+      #mobile-menu {
         position: absolute;
         left: 0;
         right: 0;
@@ -82,22 +96,9 @@ export const NavBarWrapper = styled.nav<NavBarProps>`
 
         background-color: ${({ theme }) => theme.backgroundColor};
       }
-
-      menu a {
-        font-family: 'Rubik', sans-serif;
-        font-size: 1.4rem;
-        line-height: 3rem;
-        color: ${({ theme }) => theme.titleColor};
-      }
-
-      menu a:hover {
-        transition: 0.3s;
-
-        color: var(--primary-color);
-      }
     `}
 
-  #search-bar {
+  #mobile-search-bar {
     display: none;
   }
 
@@ -105,7 +106,7 @@ export const NavBarWrapper = styled.nav<NavBarProps>`
   ${({ isSearchOpen }) =>
     isSearchOpen &&
     css`
-      #search-bar {
+      #mobile-search-bar {
         margin-top: 0.5rem;
         margin-bottom: 0.3rem;
         height: 3rem;
@@ -117,7 +118,7 @@ export const NavBarWrapper = styled.nav<NavBarProps>`
         justify-content: center;
       }
 
-      #search-bar input {
+      #mobile-search-bar input {
         width: 100%;
         padding-left: 1.5rem;
 
@@ -134,7 +135,7 @@ export const NavBarWrapper = styled.nav<NavBarProps>`
 
         outline: none;
       }
-      #search-bar button {
+      #mobile-search-bar button {
         padding: 0 1.2rem 0 1rem;
 
         background-color: var(--primary-color);
@@ -143,4 +144,78 @@ export const NavBarWrapper = styled.nav<NavBarProps>`
         border-radius: 0 3.7rem 3.7rem 0;
       }
     `}
+
+  @media(min-width: 980px) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .icons {
+      display: none;
+    }
+
+    #mobile-menu {
+      display: none;
+    }
+
+    #desktop-menu {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+
+      #search-bar {
+        margin-top: 0.5rem;
+        margin-bottom: 0.3rem;
+        height: 3rem;
+
+        animation: fade-in 500ms forwards;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+
+        input {
+          width: 100%;
+          padding-left: 1.5rem;
+
+          letter-spacing: 0.07rem;
+          color: ${({ theme }) => theme.titleColor};
+          font-weight: 500;
+          font-size: 1.4rem;
+          font-family: 'Inter', sans-serif;
+
+          border: 1px solid ${({ theme }) => theme.MenuBackgroundColor};
+          border-radius: 3.7rem;
+
+          background-color: ${({ theme }) => theme.MenuBackgroundColor};
+
+          outline: none;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 1920px) {
+    #logo {
+      font-size: 3.5rem;
+      line-height: 4.7rem;
+    }
+
+    #desktop-menu {
+      gap: 5rem;
+
+      a {
+        font-size: 1.8rem;
+      }
+
+      #search-bar {
+        height: 4.8rem;
+
+        input {
+          font-size: 1.8rem;
+        }
+      }
+    }
+  }
 `

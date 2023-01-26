@@ -39,7 +39,10 @@ export default function Episode({ episodeInfo }: EpisodeProps) {
           to={`/player/${episodeInfo.animeId}/episodes/${episodeInfo.episodeNumber}`}
           id="episode-name"
         >
-          E{episodeInfo.episodeNumber} - {episodeInfo.episodeName}
+          E{episodeInfo.episodeNumber} -{' '}
+          {episodeInfo.episodeName?.length! > 25
+            ? episodeInfo.episodeName?.slice(0, 25) + '...'
+            : episodeInfo.episodeName}
         </Link>
         <div className="minor-container">
           <span>{episodeInfo.type}</span>

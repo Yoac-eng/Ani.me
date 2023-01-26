@@ -95,4 +95,42 @@ export const EpisodeWrapper = styled.div<EpisodeWrapperProps>`
       }
     }
   }
+
+  @media (min-width: 980px) {
+    height: 15rem;
+
+    .container {
+      font-size: 1.4rem;
+
+      #anime-name {
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  @media (min-width: 1450px) {
+    width: 100%;
+    height: 24.5rem;
+
+    display: flex;
+    flex-direction: column;
+
+    #episode-banner {
+      width: 100%;
+    }
+
+    .container {
+      width: 100%;
+
+      font-size: 1.4rem;
+      line-height: 1.8rem;
+    }
+  }
+
+  @media (min-width: 1920px) {
+    .container {
+      font-size: 1.6rem;
+      line-height: 1.9rem;
+    }
+  }
 `
