@@ -33,7 +33,11 @@ export default function Episode({ episodeInfo }: EpisodeProps) {
       </Link>
       <div className="container">
         <Link to={`/anime/${episodeInfo.animeId}`} id="anime-name">
-          <span>{episodeInfo.animeName}</span>
+          <span>
+            {episodeInfo.animeName?.length! > 20
+              ? episodeInfo.animeName?.slice(0, 20) + '...'
+              : episodeInfo.animeName}
+          </span>
         </Link>
         <Link
           to={`/player/${episodeInfo.animeId}/episodes/${episodeInfo.episodeNumber}`}

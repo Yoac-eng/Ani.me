@@ -30,11 +30,15 @@ export default function Pagination({
 
   return (
     <S.PaginationWrapper>
-      <li>
-        <button onClick={onPreviousPage}>
-          <CaretLeft size={24} color={`${theme.iconColor}`} />
-        </button>
-      </li>
+      {currentPage! > 1 ? (
+        <li>
+          <button onClick={onPreviousPage}>
+            <CaretLeft size={24} color={`${theme.iconColor}`} />
+          </button>
+        </li>
+      ) : (
+        ''
+      )}
 
       {/* show an option to go back to page 1 since we r on the third page */}
       {currentPage! > 2 && (
@@ -59,11 +63,15 @@ export default function Pagination({
           <li onClick={onLastPage}>{lastPage}</li>
         </>
       )}
-      <li>
-        <button onClick={onNextPage}>
-          <CaretRight size={24} color={`${theme.iconColor}`} />
-        </button>
-      </li>
+      {hasNextPage ? (
+        <li>
+          <button onClick={onNextPage}>
+            <CaretRight size={24} color={`${theme.iconColor}`} />
+          </button>
+        </li>
+      ) : (
+        ''
+      )}
     </S.PaginationWrapper>
   )
 }

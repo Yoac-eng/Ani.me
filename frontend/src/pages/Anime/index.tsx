@@ -47,12 +47,11 @@ type EpisodeListData = {
 export default function Anime() {
   const { animeId } = useParams()
 
-  const [smallerSlice, setSmallerSlice] = useState(true)
-  const [seeMoreButtonStatus, setSeeMoreButtonStatus] = useState(false)
+  const numberOfItemsOnScreen = 4
+  const [showItems, setShowItems] = useState(numberOfItemsOnScreen)
 
   function toggleSliceSize() {
-    setSmallerSlice((prevState) => !prevState)
-    setSeeMoreButtonStatus((prevState) => !prevState)
+    setShowItems((prev) => prev + numberOfItemsOnScreen)
   }
 
   // Anime request
@@ -74,16 +73,14 @@ export default function Anime() {
   const animeData = anime?.data
 
   // Episodes request
-  const { data: episodes } = useQuery<EpisodeListData>(
-    ['episodesList', animeId],
-    async () => {
+  const { data: episodes, isLoading: episodeDataIsLoading } =
+    useQuery<EpisodeListData>(['episodesList', animeId], async () => {
       if (animeId !== 'random') {
         const response = await api.get(`anime/${animeId}/episodes`)
 
         return response.data
       }
-    },
-  )
+    })
   const episodesList = episodes?.data
 
   return (
@@ -117,30 +114,33 @@ export default function Anime() {
           />
         </>
       )}
-      <S.EpisodesWrapper>
-        {episodesList?.slice(0, smallerSlice ? 8 : 12).map((item) => (
-          <Episode
-            key={item.mal_id}
-            episodeInfo={{
-              animeId: animeData?.mal_id,
-              animeName: animeData?.title,
-              episodeName: item.title,
-              episodeNumber: item.mal_id,
-              episodeImageUrl: animeData?.trailer.images.medium_image_url,
-              duration: 23,
-              type: animeData?.type,
-              commentaries: 6,
-            }}
-          />
-        ))}
-      </S.EpisodesWrapper>
-      {episodesList?.length! >= 6 && (
-        <SeeMoreButton
-          onClick={toggleSliceSize}
-          seeMoreButtonStatus={seeMoreButtonStatus}
-        />
+      {episodeDataIsLoading ? (
+        <Loading />
+      ) : (
+        <>
+          <S.EpisodesWrapper>
+            {episodesList?.slice(0, showItems).map((item) => (
+              <Episode
+                key={item.mal_id}
+                episodeInfo={{
+                  animeId: animeData?.mal_id,
+                  animeName: animeData?.title,
+                  episodeName: item.title,
+                  episodeNumber: item.mal_id,
+                  episodeImageUrl: animeData?.trailer.images.medium_image_url,
+                  duration: 23,
+                  type: animeData?.type,
+                  commentaries: 6,
+                }}
+              />
+            ))}
+          </S.EpisodesWrapper>
+          {episodesList && episodesList.length > showItems && (
+            <SeeMoreButton onClick={toggleSliceSize} />
+          )}
+          <Comments />
+        </>
       )}
-      <Comments />
     </S.AnimeWrapper>
   )
 }
