@@ -58,6 +58,7 @@ export const Form = styled.form`
     padding-block: 0.4rem;
     background: var(--primary-color);
     border: none;
+    border-radius: 0.4rem;
 
     line-height: 32px;
     color: var(--white);

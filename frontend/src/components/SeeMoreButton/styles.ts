@@ -9,7 +9,7 @@ export const SeeMoreButtonWrapper = styled.button`
 
   background: ${({ theme }) => theme.buttonBackgroundColor};
 
-  border-radius: 4px;
+  border-radius: 0.4rem;
   border-color: ${({ theme }) => theme.buttonBackgroundColor};
   border-style: solid;
 

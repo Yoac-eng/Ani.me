@@ -2,7 +2,7 @@ import { ButtonHTMLAttributes } from 'react'
 import * as S from './styles'
 
 interface SeeMoreButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  seeMoreButtonStatus: Boolean
+  seeMoreButtonStatus?: Boolean
 }
 
 export default function SeeMoreButton({ ...rest }: SeeMoreButtonProps) {

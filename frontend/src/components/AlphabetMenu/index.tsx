@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import * as S from './styles'
 
@@ -39,25 +38,17 @@ export default function AlphabetMenu() {
       <Link className="scroll-element showall-element" to={`/search?page=${1}`}>
         Todos
       </Link>
-      {Alphabet.map((item) =>
-        item === letterSearchParam.toUpperCase() ? (
-          <Link
-            key={item}
-            className="scroll-element highlighted"
-            to={`/search?letter=${item.toLowerCase()}&page=${1}`}
-          >
-            {item}
-          </Link>
-        ) : (
-          <Link
-            key={item}
-            className="scroll-element"
-            to={`/search?letter=${item.toLowerCase()}&page=${1}`}
-          >
-            {item}
-          </Link>
-        ),
-      )}
+      {Alphabet.map((item) => (
+        <Link
+          key={item}
+          className={`${
+            item === letterSearchParam.toUpperCase() ? 'highlighted' : ''
+          } scroll-element`}
+          to={`/search?letter=${item.toLowerCase()}&page=${1}`}
+        >
+          {item}
+        </Link>
+      ))}
     </S.ScrollMenu>
   )
 }
